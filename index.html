@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>WEB3D · Customer Success Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@700&amp;family=Rubik:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ffffff;color-scheme:light;-webkit-font-smoothing:antialiased}
+a{color:#F0565C;text-decoration:none}a:hover{color:#d9434a}
+input,select,textarea,button{font:inherit;color:inherit}
+select option{background:#ffffff;color:#141414}
+button{cursor:pointer}
+:focus-visible{outline:3px solid rgba(240,86,92,.55);outline-offset:3px}
+::selection{background:#F0565C;color:#ffffff}
+@keyframes wA{0%{transform:rotate(0deg) scale(1)}34.78%{transform:rotate(180deg) scale(.5)}69.57%,100%{transform:rotate(360deg) scale(1)}}
+@keyframes wB{0%,8.7%{transform:rotate(0deg) scale(1)}43.48%{transform:rotate(180deg) scale(.9)}78.26%,100%{transform:rotate(360deg) scale(1)}}
+@keyframes wC{0%,17.39%{transform:rotate(0deg) scale(1)}52.17%{transform:rotate(180deg) scale(1.6)}86.96%,100%{transform:rotate(360deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){polygon{animation:none!important}}
+</style>
+</helmet>
+<div dir="rtl" lang="he" style="min-height:100vh;background:#ffffff;color:#3a3a3a;font-family:Rubik,system-ui,sans-serif;font-size:15px;line-height:1.5;position:relative;overflow-x:hidden">
+<div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:520px;background:radial-gradient(60% 70% at 20% 0%,#fff0ef 0%,rgba(255,255,255,0) 70%),linear-gradient(180deg,#fff5f4 0%,#ffffff 360px);pointer-events:none;z-index:0"></div>
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid #f3eeed">
+<div style="max-width:1320px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:14px">
+<svg viewBox="110 100 432 112" role="img" aria-label="Web3D" style="height:24px;width:auto;display:block;overflow:visible" dir="ltr">
+<polygon fill="#F0565C" points="121.05 110.89 211.4 200.92 121.05 200.92 121.05 110.89" style="transform-box:fill-box;transform-origin:center;animation:wA 2.3s cubic-bezier(.45,.05,.55,.95) 0s infinite both"></polygon>
+<polygon fill="#F0565C" points="155.64 115.9 204.84 164.95 204.84 182.3 138.21 115.9 155.64 115.9" style="transform-box:fill-box;transform-origin:center;animation:wB 2.3s cubic-bezier(.45,.05,.55,.95) 0s infinite both"></polygon>
+<polygon fill="#F0565C" points="176.35 123.96 196.66 123.96 196.66 144.2 176.35 123.96" style="transform-box:fill-box;transform-origin:center;animation:wC 2.3s cubic-bezier(.45,.05,.55,.95) 0s infinite both"></polygon>
+<g fill="#F0565C"><path d="M306.83,130.6l-19.56,68.92h-13.48l-10.64-52.8-10.74,52.8h-13.58l-19.66-68.92c6.59-.01,15.47.35,18.24,14.82l8.11,33.73,10.14-48.55h15l9.93,48.55,8.15-33.71c3.25-15.84,14.55-14.84,18.1-14.84"></path><path d="M329.94,200.73c-16.22-.51-24.32-9.93-24.32-28.17s8.21-27.36,24.53-27.46c17.03,0,25.03,10.44,24.02,31.42h-34.66c.51,8.21,4.05,12.37,10.64,12.37,3.14,0,6.08-1.32,8.72-3.85,1.22-1.32,2.74-1.93,4.56-1.93h9.93c-2.94,11.35-10.24,17.63-23.41,17.63M319.7,166.88h20.17c-.81-7.09-4.15-10.74-9.93-10.74s-9.22,3.65-10.24,10.74"></path><path d="M373.92,153.4c3.45-5.57,8.51-8.31,15.2-8.31,14.29.51,21.38,9.83,21.38,28.07s-8.31,26.86-24.93,27.16c-16.72.1-25.13-7.91-25.13-24.02v-45.71c4.46,0,13.48,1.26,13.48,13.49v9.31ZM373.92,172.56c-.1,10.85,3.55,16.32,11.25,16.32s11.55-5.47,11.55-16.32c-.3-10.34-4.05-15.4-11.35-15.4s-11.05,5.07-11.45,15.4"></path><path d="M449.63,149.25c.1-5.78-2.94-8.72-9.22-8.72s-9.63,3.65-9.93,11.05h-7.3c-4.76.1-6.49-2.33-5.17-7.3,2.94-9.93,10.54-14.8,22.9-14.8,15-.1,22.7,6.08,23.01,18.75.3,6.28-2.53,10.95-8.51,13.68,7.4,2.64,11.05,8.01,11.05,16.22,0,14.8-8.61,22.3-26.05,22.4-17.33,0-25.64-7.7-24.83-23.01h13.68c.1,7.81,3.85,11.65,11.25,11.56,7.4-.1,11.15-3.45,11.15-10.34s-4.46-10.44-13.48-10.54h-2.13v-9.43h1.52c7.6,0,12.06-2.53,12.06-9.53"></path><path d="M530.91,165.06c0,16.93-7.3,29.49-20.57,33.04-3.45.91-8.31,1.42-14.59,1.42h-23.21v-61.52c0-4.76,2.33-7.3,7.1-7.4h19.86c21.89,0,31.42,12.47,31.42,34.46M499.5,142.66h-13.07v44.39h11.25c13.99,0,18.85-7.5,18.85-21.99s-4.25-22.4-17.03-22.4"></path></g>
+</svg>
+<div style="width:1px;height:20px;background:#e9e0de"></div>
+<div style="font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px;letter-spacing:.04em">CUSTOMER SUCCESS BOARD</div>
+</div>
+<nav aria-label="ניווט ראשי" style="display:flex;gap:4px;padding:4px;background:#f6f1f0;border:1px solid #f3eeed;border-radius:12px;margin-inline-start:auto;margin-inline-end:auto">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+<button type="button" onClick="{{ n.go }}" aria-current="{{ n.cur }}" style="border:0;border-radius:9px;padding:7px 16px;font-size:14px;font-weight:500;background:{{ n.bg }};color:{{ n.color }};box-shadow:{{ n.sh }};display:flex;align-items:center;gap:8px;transition:background .2s">{{ n.t }}<sc-if value="{{ n.hasCount }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;padding:1px 7px;border-radius:999px;background:#fdeced;color:#c62f36">{{ n.count }}</span></sc-if></button>
+</sc-for>
+</nav>
+<div style="position:relative">
+<button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menu }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:7px 14px;font-size:14px;color:#141414">נתונים ויבוא</button>
+<sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:calc(100% + 8px);left:0;width:300px;background:#ffffff;border:1px solid #efe7e5;border-radius:20px;padding:8px;box-shadow:0 30px 90px rgba(20,20,20,.16);display:flex;flex-direction:column;gap:2px;z-index:40">
+<div style="padding:10px 12px 8px;font-size:12px;color:#6b6b6b">מקור: {{ sourceName }} · {{ totalClients }} רשומות</div>
+<button type="button" onClick="{{ pickCsv }}" style="text-align:start;border:0;background:transparent;padding:10px 12px;border-radius:10px;font-size:14px">יבוא CSV של לקוחות…</button>
+<button type="button" onClick="{{ exportBackup }}" style="text-align:start;border:0;background:transparent;padding:10px 12px;border-radius:10px;font-size:14px">ייצוא גיבוי מחקר (JSON)</button>
+<button type="button" onClick="{{ pickBackup }}" style="text-align:start;border:0;background:transparent;padding:10px 12px;border-radius:10px;font-size:14px">שחזור גיבוי מחקר…</button>
+<button type="button" onClick="{{ resetSource }}" style="text-align:start;border:0;background:transparent;padding:10px 12px;border-radius:10px;font-size:14px">חזרה לקובץ המקור המקורי</button>
+<div style="padding:8px 12px 10px;font-size:12px;color:#6b6b6b;border-top:1px solid #f3eeed;margin-top:4px">רשומות המקור נשמרות כפי שהן. מחקר והערות נשמרים בנפרד, לפי מזהה לקוח. אין כתיבה ל-Monday.</div>
+</div>
+</sc-if>
+<input type="file" accept=".csv,text/csv" ref="{{ csvRef }}" onChange="{{ onCsv }}" style="display:none">
+<input type="file" accept=".json,application/json" ref="{{ bakRef }}" onChange="{{ onBackup }}" style="display:none">
+</div>
+</div>
+</header>
+
+<main style="position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:40px 32px 96px;box-sizing:border-box">
+<sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+<div style="padding:80px 0;text-align:center;color:#6b6b6b">{{ loadMsg }}</div>
+</sc-if>
+
+<sc-if value="{{ vOverview }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Overview" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div>
+<div style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.14em;color:#6b6b6b;margin-bottom:12px">WEB3D · סינון לקוחות<span style="width:32px;height:2px;background:#F0565C;display:block"></span></div>
+<h1 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:40px;line-height:1.1;letter-spacing:-.01em">סקירה</h1>
+<p style="margin:8px 0 0;color:#6b6b6b;max-width:640px;text-wrap:pretty">רשימה ראשונית לפנייה, על בסיס חמש בדיקות: האתר, גוגל, קמפיינים, Google Business ורשתות. פער שאומת הוא סימן להזדמנות, לא קביעה על איכות השיווק של הלקוח.</p>
+</div>
+<button type="button" onClick="{{ goClients }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:12px;padding:11px 20px;font-size:15px">לרשימת הלקוחות</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px">
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:20px;padding:22px 24px;display:flex;flex-direction:column;gap:6px">
+<div style="font-size:13px;color:#6b6b6b">{{ s.t }}</div>
+<div style="font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:44px;line-height:1;color:{{ s.c }}">{{ s.v }}</div>
+<div style="font-size:12px;color:#6b6b6b">{{ s.sub }}</div>
+</div>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px;align-items:start">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+<h2 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:22px">רשימה קצרה לפנייה</h2>
+<span style="font-size:12px;color:#6b6b6b">לפי פערים מאומתים בלבד</span>
+</div>
+<sc-if value="{{ hasShort }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ shortlist }}" as="r" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #f3eeed;flex-wrap:wrap">
+<div style="flex:1;min-width:180px">
+<div style="font-weight:500">{{ r.name }}</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><sc-for list="{{ r.gapNames }}" as="g" hint-placeholder-count="1"><span style="font-size:12px;padding:2px 9px;border-radius:999px;background:#fdeced;color:#c62f36;border:1px solid #f8c9cb">{{ g }}</span></sc-for></div>
+</div>
+<span style="font-size:12px;color:#6b6b6b">{{ r.doneText }}</span>
+<button type="button" onClick="{{ r.toggleNext }}" aria-pressed="{{ r.inNext }}" style="border:1px solid #e9e0de;background:transparent;border-radius:9px;padding:6px 12px;font-size:13px">{{ r.nextLabel }}</button>
+<button type="button" onClick="{{ r.open }}" style="border:0;background:#f6f1f0;border-radius:9px;padding:6px 12px;font-size:13px">פרופיל</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ noShort }}" hint-placeholder-val="{{ true }}">
+<div style="padding:18px;border:1px dashed #d9cfcd;border-radius:14px;color:#6b6b6b;font-size:14px;text-wrap:pretty">עדיין אין לקוחות עם פער מאומת. פערים יופיעו כאן רק לאחר בדיקה עם תאריך וראיה.</div>
+</sc-if>
+<div style="font-size:13px;font-weight:600;color:#141414;margin-top:4px">10 הלקוחות הראשונים לבדיקה</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ queue }}" as="r" hint-placeholder-count="10">
+<div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-top:1px solid #f3eeed;flex-wrap:wrap">
+<span style="font-size:12px;color:#6b6b6b;min-width:16px;padding-top:2px">{{ r.num }}</span>
+<div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:3px">
+<div style="font-weight:500;color:#141414">{{ r.name }}</div>
+<div style="font-size:13px;color:#3a3a3a;text-wrap:pretty">{{ r.why }}</div>
+<div style="font-size:12px;color:#6b6b6b">כיוון אפשרי: {{ r.dir }} · {{ r.doneText }}</div>
+</div>
+<div style="display:flex;gap:8px">
+<button type="button" onClick="{{ r.toggleNext }}" aria-pressed="{{ r.inNext }}" style="border:1px solid #e9e0de;background:transparent;border-radius:9px;padding:6px 12px;font-size:13px">{{ r.nextLabel }}</button>
+<button type="button" onClick="{{ r.open }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:9px;padding:6px 14px;font-size:13px">התחל מחקר</button>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px">
+<h2 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:22px">תהליך העבודה</h2>
+<ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ flow }}" as="f" hint-placeholder-count="8">
+<li style="display:flex;align-items:center;gap:12px;padding:8px 0">
+<span style="width:24px;height:24px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:600;background:{{ f.bg }};color:{{ f.fc }}">{{ f.n }}</span>
+<span style="flex:1;font-size:14px">{{ f.t }}</span>
+<span style="font-size:13px;color:#6b6b6b">{{ f.v }}</span>
+</li>
+</sc-for>
+</ol>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:22px">מה אוטומטי ומה ידני</h2>
+<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">אוטומטי כבר עכשיו: בדיקת האתר ותיעוד קולי שממלא את הבדיקות. השאר נפתח בלחיצה אחת ומאומת בעין. לאוטומציה מלאה צריך שרת ומפתחות API:</p>
+<sc-for list="{{ integrations }}" as="i" hint-placeholder-count="4">
+<div style="display:flex;gap:12px;padding:10px 0;border-top:1px solid #f3eeed">
+<div style="flex:1"><div style="font-size:14px;font-weight:500">{{ i.t }}</div><div style="font-size:12px;color:#6b6b6b;text-wrap:pretty">{{ i.d }}</div></div>
+<span style="font-size:12px;color:#6b6b6b;white-space:nowrap">{{ i.s }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ vClients }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Clients" style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div>
+<div style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.14em;color:#6b6b6b;margin-bottom:12px">רשימת הלקוחות מה-CRM<span style="width:32px;height:2px;background:#F0565C;display:block"></span></div>
+<h1 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:40px;line-height:1.1">לקוחות</h1>
+<p style="margin:8px 0 0;color:#6b6b6b">{{ shownText }}</p>
+</div>
+<input type="search" value="{{ q }}" onChange="{{ onQ }}" placeholder="חיפוש לפי שם לקוח, מותג או אתר" aria-label="חיפוש לקוח" style="width:min(360px,100%);background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:11px 14px;font-size:15px;box-sizing:border-box">
+</div>
+<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<span style="font-size:13px;color:#6b6b6b">פער מאומת ב:</span>
+<sc-for list="{{ gapFilters }}" as="g" hint-placeholder-count="4">
+<button type="button" onClick="{{ g.toggle }}" aria-pressed="{{ g.on }}" style="border:1px solid {{ g.bd }};background:{{ g.bg }};color:{{ g.color }};border-radius:999px;padding:6px 14px;font-size:13px">{{ g.t }}</button>
+</sc-for>
+</div>
+<div style="display:flex;gap:4px;padding:3px;background:#f6f1f0;border-radius:10px">
+<sc-for list="{{ statusFilters }}" as="f" hint-placeholder-count="5">
+<button type="button" onClick="{{ f.go }}" aria-pressed="{{ f.on }}" style="border:0;border-radius:8px;padding:6px 12px;font-size:13px;background:{{ f.bg }};color:{{ f.color }}">{{ f.t }}</button>
+</sc-for>
+</div>
+<label style="display:flex;gap:8px;align-items:center;font-size:13px;color:#6b6b6b;margin-inline-start:auto">מיון
+<select value="{{ sort }}" onChange="{{ onSort }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:13px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px">
+<option value="gaps">פערים מאומתים</option>
+<option value="done">בדיקות שהושלמו</option>
+<option value="review">סטטוס אלון / ניצן</option>
+<option value="name">שם</option>
+</select></label>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:20px;overflow-x:auto">
+<div role="table" aria-label="רשימת לקוחות" style="min-width:1224px">
+<div role="row" style="display:grid;grid-template-columns:52px minmax(200px,2fr) minmax(150px,1.2fr) 104px 104px 104px 104px 104px 104px 96px 84px;gap:0;align-items:center;padding:12px 8px;font-size:12px;color:#6b6b6b;border-bottom:1px solid #f3eeed">
+<span role="columnheader" style="text-align:center">10</span><span role="columnheader">לקוח</span><span role="columnheader">אתר</span><span role="columnheader">עיצוב אתר</span><span role="columnheader">גוגל</span><span role="columnheader">קמפיינים</span><span role="columnheader">Google Business</span><span role="columnheader">רשתות</span><span role="columnheader">פערים</span><span role="columnheader">בדיקה אחרונה</span><span role="columnheader"></span>
+</div>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+<div role="row" style="display:grid;grid-template-columns:52px minmax(200px,2fr) minmax(150px,1.2fr) 104px 104px 104px 104px 104px 104px 96px 84px;align-items:center;padding:10px 8px;border-bottom:1px solid #f3eeed;font-size:14px">
+<span style="display:flex;justify-content:center"><button type="button" onClick="{{ r.toggleNext }}" aria-pressed="{{ r.inNext }}" aria-label="הוספה ל-10 הבאים" style="width:22px;height:22px;border-radius:7px;border:1px solid {{ r.selBd }};background:{{ r.selBg }};color:#ffffff;font-size:13px;font-weight:600;padding:0;line-height:1">{{ r.selMark }}</button></span>
+<div style="min-width:0;padding-inline-end:12px"><div style="font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.name }}</div><div style="font-size:12px;color:{{ r.subColor }};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.sub }}</div></div>
+<div style="min-width:0;padding-inline-end:12px;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" dir="ltr"><sc-if value="{{ r.hasSite }}" hint-placeholder-val="{{ true }}"><a href="{{ r.siteHref }}" target="_blank" rel="noopener" style="text-align:right">{{ r.siteShort }}</a></sc-if><sc-if value="{{ r.noSite }}" hint-placeholder-val="{{ false }}"><span dir="rtl" style="color:#6b6b6b">אין אתר מתועד</span></sc-if></div>
+<sc-for list="{{ r.chips }}" as="c" hint-placeholder-count="4">
+<span><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ c.c }};background:{{ c.bg }};border:1px {{ c.bs }} {{ c.bd }}">{{ c.t }}</span></span>
+</sc-for>
+<div><div style="font-weight:600"><span style="color:{{ r.gapColor }}">{{ r.gaps }}</span> / 5 פערים</div><div style="font-size:12px;color:#6b6b6b">{{ r.doneText }}</div></div>
+<span style="font-size:13px;color:#6b6b6b">{{ r.last }}</span>
+<button type="button" onClick="{{ r.open }}" style="border:0;background:#f6f1f0;border-radius:9px;padding:6px 12px;font-size:13px">פתיחה</button>
+</div>
+</sc-for>
+<sc-if value="{{ noRows }}" hint-placeholder-val="{{ false }}"><div style="padding:40px;text-align:center;color:#6b6b6b">אין לקוחות שתואמים לסינון.</div></sc-if>
+</div>
+</div>
+<sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ showMore }}" style="align-self:center;border:1px solid #e9e0de;background:transparent;border-radius:12px;padding:10px 22px;font-size:14px">הצג עוד</button>
+</sc-if>
+</section>
+</sc-if>
+
+<sc-if value="{{ vNext }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Next 10" style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div>
+<div style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.14em;color:#6b6b6b;margin-bottom:12px">לפני כל שיחה<span style="width:32px;height:2px;background:#F0565C;display:block"></span></div>
+<h1 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:40px;line-height:1.1">10 הבאים</h1>
+<p style="margin:8px 0 0;color:#6b6b6b;max-width:640px;text-wrap:pretty">{{ nextCount }} מתוך 10 נבחרו. שולחים לאלון / ניצן לפני כל שיחה, ומתעדים כאן רק את מה שהם אמרו בפועל.</p>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button type="button" onClick="{{ autoFill }}" style="border:1px solid #e9e0de;background:transparent;border-radius:12px;padding:10px 16px;font-size:14px">השלמה מהרשימה הקצרה</button>
+<button type="button" onClick="{{ copyList }}" style="border:1px solid #e9e0de;background:transparent;border-radius:12px;padding:10px 16px;font-size:14px">העתקת הרשימה לשליחה</button>
+<button type="button" onClick="{{ exportCsv }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:12px;padding:10px 18px;font-size:14px">ייצוא CSV</button>
+</div>
+</div>
+<sc-if value="{{ sentText }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">{{ sentText }}</div></sc-if>
+<sc-if value="{{ nextEmpty }}" hint-placeholder-val="{{ true }}">
+<div style="background:#ffffff;border:1.5px dashed #e0d6d4;border-radius:20px;padding:40px;text-align:center;color:#6b6b6b;text-wrap:pretty">עדיין לא נבחרו לקוחות. סמנו לקוחות ברשימת הלקוחות, או השלימו אוטומטית מלקוחות עם פערים מאומתים.</div>
+</sc-if>
+<sc-for list="{{ nextRows }}" as="r" hint-placeholder-count="0">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:20px;padding:22px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px">
+<div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+<div style="display:flex;gap:12px;align-items:baseline">
+<span style="font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:22px;color:#6b6b6b">{{ r.idx }}</span>
+<div style="min-width:0">
+<div style="font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:20px">{{ r.name }}</div>
+<sc-if value="{{ r.hasSite }}" hint-placeholder-val="{{ true }}"><a href="{{ r.siteHref }}" target="_blank" rel="noopener" dir="ltr" style="font-size:13px">{{ r.siteShort }}</a></sc-if><sc-if value="{{ r.noSite }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b6b6b">אין אתר מתועד</span></sc-if>
+</div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ r.gapNames }}" as="g" hint-placeholder-count="1"><span style="font-size:12px;padding:2px 9px;border-radius:999px;background:#fdeced;color:#c62f36;border:1px solid #f8c9cb">{{ g }}</span></sc-for>
+<span style="font-size:12px;color:#6b6b6b;padding:2px 0">{{ r.doneText }}</span>
+</div>
+<sc-if value="{{ r.hasWhy }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#3a3a3a;text-wrap:pretty">{{ r.why }}</div><div style="font-size:13px;color:#6b6b6b"><span style="color:#141414">כיוון אפשרי:</span> {{ r.dir }}</div></sc-if>
+<div style="font-size:13px;color:#6b6b6b;text-wrap:pretty"><span style="color:#141414">קשר קיים:</span> {{ r.rel }}</div>
+<sc-if value="{{ r.hasMain }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline"><span style="color:#141414">איש קשר:</span><span>{{ r.mainName }}</span><sc-if value="{{ r.mainTel }}" hint-placeholder-val="{{ false }}"><a href="{{ r.mainTelHref }}" dir="ltr">{{ r.mainTel }}</a></sc-if><sc-if value="{{ r.moreContacts }}" hint-placeholder-val="{{ false }}"><span>{{ r.moreContacts }}</span></sc-if></div></sc-if>
+<div style="display:flex;gap:8px;margin-top:4px">
+<button type="button" onClick="{{ r.open }}" style="border:0;background:#f6f1f0;border-radius:9px;padding:6px 12px;font-size:13px">פרופיל והכנה לשיחה</button>
+<button type="button" onClick="{{ r.remove }}" style="border:0;background:transparent;border-radius:9px;padding:6px 12px;font-size:13px;color:#6b6b6b">הסרה</button>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+<div role="group" aria-label="סטטוס אלון / ניצן" style="display:flex;gap:4px;flex-wrap:wrap">
+<sc-for list="{{ r.statuses }}" as="s" hint-placeholder-count="5">
+<button type="button" onClick="{{ s.go }}" aria-pressed="{{ s.on }}" style="border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.color }};border-radius:999px;padding:5px 12px;font-size:12px;font-weight:500">{{ s.t }}</button>
+</sc-for>
+</div>
+<textarea value="{{ r.notes }}" onChange="{{ r.onNotes }}" rows="3" placeholder="הערות אלון / ניצן, כפי שנמסרו בפועל" aria-label="הערות אלון / ניצן" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
+<sc-if value="{{ r.approved }}" hint-placeholder-val="{{ false }}">
+<label style="display:flex;gap:8px;align-items:center;font-size:13px;color:#6b6b6b">תוצאת שיחה
+<select value="{{ r.outcome }}" onChange="{{ r.onOutcome }}" style="flex:1;background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:13px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px">
+<option value="">טרם התקיימה</option><option value="quote">התבקשה הצעת מחיר</option><option value="meeting">פגישה עם אלון / ניצן</option><option value="opp">זוהתה הזדמנות</option><option value="service">בעיית שירות</option><option value="callback">התבקשה חזרה במועד מסוים</option><option value="noneed">אין צורך</option><option value="notint">לא מעוניין</option><option value="noanswer">אין מענה</option>
+</select></label>
+</sc-if>
+</div>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{ vActions }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="My actions" style="display:flex;flex-direction:column;gap:20px;max-width:860px">
+<div>
+<div style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.14em;color:#6b6b6b;margin-bottom:12px">מה עושים עכשיו<span style="width:32px;height:2px;background:#F0565C;display:block"></span></div>
+<h1 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:40px;line-height:1.1">הפעולות שלי</h1>
+<p style="margin:8px 0 0;color:#6b6b6b;text-wrap:pretty">חמש הפעולות הפתוחות החשובות. משימות המשך נוצרות רק מהתחייבות אמיתית או חזרה שסוכמה, לא מרדיפה אחרי לקוח שלא מעוניין.</p>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:20px;padding:8px 24px">
+<sc-for list="{{ topActions }}" as="a" hint-placeholder-count="5">
+<div style="display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #f3eeed;flex-wrap:wrap">
+<span style="font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:20px;color:#6b6b6b;width:20px">{{ a.n }}</span>
+<div style="flex:1;min-width:220px">
+<div style="font-weight:500">{{ a.t }}</div>
+<div style="font-size:12px;color:#6b6b6b;display:flex;gap:10px;flex-wrap:wrap"><span style="color:{{ a.kc }}">{{ a.kind }}</span><span>{{ a.sub }}</span></div>
+</div>
+<sc-if value="{{ a.canDone }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ a.done }}" style="border:1px solid #e9e0de;background:transparent;border-radius:9px;padding:6px 12px;font-size:13px">בוצע</button></sc-if>
+<button type="button" onClick="{{ a.go }}" style="border:0;background:#f6f1f0;border-radius:9px;padding:6px 12px;font-size:13px">{{ a.goLabel }}</button>
+</div>
+</sc-for>
+<sc-if value="{{ noActions }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 0;text-align:center;color:#6b6b6b">אין פעולות פתוחות.</div></sc-if>
+</div>
+<sc-if value="{{ moreActionsText }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">{{ moreActionsText }}</div></sc-if>
+</section>
+</sc-if>
+</main>
+
+<sc-if value="{{ hasProfile }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="{{ p.name }}" style="position:fixed;inset:0;z-index:50;display:flex;justify-content:center;align-items:flex-start;padding:3vh 20px;box-sizing:border-box;overflow-y:auto">
+<div onClick="{{ closeProfile }}" style="position:fixed;inset:0;background:rgba(20,20,20,.36);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)"></div>
+<div data-screen-label="Client profile" style="position:relative;width:min(1120px,100%);background:#fbf9f8;border:1px solid #efe7e5;border-radius:28px;box-shadow:0 30px 90px rgba(20,20,20,.22);display:flex;flex-direction:column">
+<div style="position:sticky;top:0;z-index:2;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:28px 28px 0 0;border-bottom:1px solid #f3eeed;padding:20px 28px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+<div style="flex:1;min-width:240px">
+<div style="font-size:12px;color:#6b6b6b">{{ p.id }} · {{ p.stage }}</div>
+<h2 style="margin:2px 0 0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:28px;line-height:1.15">{{ p.name }}</h2>
+<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center">
+<span style="font-size:13px;font-weight:600;color:{{ p.gapColor }}">{{ p.gaps }} / 5 פערים מאומתים</span>
+<span style="font-size:13px;color:#6b6b6b">· {{ p.doneText }}</span>
+<sc-if value="{{ p.needs }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;padding:2px 9px;border-radius:999px;border:1px dashed #d9cfcd;color:#6b6b6b">דורש מחקר</span></sc-if>
+</div>
+</div>
+<select value="{{ p.hold }}" onChange="{{ h.hold }}" aria-label="השהיה" style="background:#ffffff;border:1.5px solid {{ p.holdBd }};border-radius:10px;padding:8px 10px;font-size:13px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px">
+<option value="">ניתן לפנות</option><option value="hold">השהיה אסטרטגית</option><option value="dnc">לא לפנות</option>
+</select>
+<button type="button" onClick="{{ h.toggleNext }}" aria-pressed="{{ p.inNext }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:8px 14px;font-size:13px">{{ p.nextLabel }}</button>
+<button type="button" onClick="{{ closeProfile }}" aria-label="סגירה" style="border:0;background:#f6f1f0;border-radius:999px;width:36px;height:36px;font-size:18px;line-height:1">×</button>
+</div>
+
+<div style="padding:24px 28px 32px;display:flex;flex-direction:column;gap:20px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;align-items:start">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">מידע מקורי מה-CRM</h3>
+<div style="font-size:12px;color:#6b6b6b">לקריאה בלבד · {{ p.sourceName }}</div>
+<dl style="margin:0;display:grid;grid-template-columns:minmax(110px,auto) minmax(0,1fr);gap:6px 14px;font-size:13px">
+<sc-for list="{{ p.srcFields }}" as="f" hint-placeholder-count="9">
+<dt style="color:#6b6b6b">{{ f.k }}</dt><dd style="margin:0;overflow-wrap:anywhere">{{ f.v }}</dd>
+</sc-for>
+</dl>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">אתרים</h3>
+<sc-for list="{{ p.sites }}" as="s" hint-placeholder-count="1">
+<div style="display:flex;gap:10px;align-items:center;font-size:14px"><a href="{{ s.href }}" target="_blank" rel="noopener" dir="ltr" style="flex:1;overflow-wrap:anywhere">{{ s.v }}</a><span style="font-size:12px;color:#6b6b6b">{{ s.tag }}</span><sc-if value="{{ s.canRm }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ s.rm }}" aria-label="הסרת אתר" style="border:0;background:transparent;color:#6b6b6b;font-size:13px">הסרה</button></sc-if></div>
+</sc-for>
+<div style="display:flex;gap:8px"><input value="{{ d.site }}" onChange="{{ h.dSite }}" placeholder="אתר נוסף (למשל דומיין שאומת)" dir="ltr" style="flex:1;background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 12px;font-size:14px;min-width:0"><button type="button" onClick="{{ h.addSite }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px">הוספה</button></div>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">אנשי קשר</h3>
+<sc-for list="{{ p.contacts }}" as="c" hint-placeholder-count="1">
+<div style="display:flex;gap:10px;align-items:baseline;font-size:14px;flex-wrap:wrap"><span style="font-weight:500">{{ c.name }}</span><span style="font-size:13px;color:#6b6b6b;flex:1">{{ c.meta }}</span><sc-if value="{{ c.tel }}" hint-placeholder-val="{{ false }}"><a href="{{ c.telHref }}" dir="ltr" style="font-size:13px">{{ c.tel }}</a></sc-if><sc-if value="{{ c.canRm }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ c.rm }}" style="border:0;background:transparent;color:#6b6b6b;font-size:13px">הסרה</button></sc-if></div>
+</sc-for>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<input value="{{ d.cName }}" onChange="{{ h.dCName }}" placeholder="שם" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 12px;font-size:14px;min-width:0">
+<input value="{{ d.cRole }}" onChange="{{ h.dCRole }}" placeholder="תפקיד" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 12px;font-size:14px;min-width:0">
+<input value="{{ d.cPhone }}" onChange="{{ h.dCPhone }}" placeholder="טלפון" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 12px;font-size:14px;min-width:0;text-align:right">
+<input value="{{ d.cEmail }}" onChange="{{ h.dCEmail }}" placeholder="אימייל" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 12px;font-size:14px;min-width:0;text-align:right">
+</div>
+<button type="button" onClick="{{ h.addContact }}" style="align-self:flex-start;border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px">הוספת איש קשר</button>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">הערה קצרה</h3>
+<div style="font-size:13px;color:#6b6b6b">אינטראקציה אחרונה מתועדת: {{ p.lastInteraction }}</div>
+<textarea value="{{ p.note }}" onChange="{{ h.note }}" rows="3" placeholder="מה חשוב לזכור לפני פנייה" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
+</div>
+</div>
+</div>
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:22px">חמש הבדיקות</h3>
+<div style="font-size:13px;color:#6b6b6b">מונח חיפוש: <input value="{{ p.brand }}" onChange="{{ h.brand }}" placeholder="{{ p.name }}" aria-label="שם ציבורי לחיפוש" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:6px 10px;font-size:13px;width:220px"></div>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">מחקר מהיר</h3><div style="font-size:13px;color:#6b6b6b;text-wrap:pretty">בדיקת אתר אוטומטית, כל מקורות המחקר בלחיצה אחת, ותיעוד בקול שממלא את הבדיקות.</div></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button type="button" onClick="{{ h.runAuto }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:12px;padding:9px 16px;font-size:14px">{{ p.autoLabel }}</button>
+<button type="button" onClick="{{ h.openAll }}" style="border:1px solid #e9e0de;background:transparent;border-radius:12px;padding:9px 16px;font-size:14px;color:#141414">פתיחת כל המקורות ({{ p.srcCount }})</button>
+</div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ p.sources }}" as="x" hint-placeholder-count="6"><a href="{{ x.u }}" target="_blank" rel="noopener" style="font-size:12px;padding:4px 10px;border-radius:999px;background:#f6f1f0;color:#3a3a3a;text-decoration:none">{{ x.t }} ↗</a></sc-for>
+</div>
+<sc-if value="{{ p.autoMsg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:10px;background:#fdf3f3;border:1px solid #f6d6d7;border-radius:12px;padding:12px 14px">
+<div style="font-size:13px;color:#a3262c;text-wrap:pretty">{{ p.autoMsg }}</div>
+<div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b;flex:1;min-width:220px">מפתח PageSpeed API (נשמר בדפדפן הזה בלבד)<input value="{{ p.psKey }}" onChange="{{ h.psKey }}" dir="ltr" placeholder="AIza…" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px"></label>
+<a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey" target="_blank" rel="noopener" style="font-size:13px;padding:8px 0">איך מקבלים מפתח ↗</a>
+<a href="{{ p.psManual }}" target="_blank" rel="noopener" style="font-size:13px;padding:8px 0">בדיקה ידנית ב-PageSpeed ↗</a>
+</div>
+</div></sc-if>
+<div style="display:flex;gap:14px;align-items:flex-start;border-top:1px solid #f3eeed;padding-top:16px">
+<button type="button" onClick="{{ h.mic }}" aria-pressed="{{ p.rec }}" aria-label="{{ p.micLabel }}" style="flex:none;width:52px;height:52px;border-radius:999px;border:1.5px solid {{ p.micBd }};background:{{ p.micBg }};display:flex;align-items:center;justify-content:center;padding:0"><span style="width:{{ p.micDot }};height:{{ p.micDot }};border-radius:{{ p.micRad }};background:{{ p.micFg }}"></span></button>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13px;color:#141414;font-weight:500">{{ p.micLabel }}</div>
+<textarea value="{{ p.vt }}" onChange="{{ h.vt }}" rows="4" placeholder="ספרו מה מצאתם: איך נראה האתר, אם יש מודעות בספריות, מתי הפוסט האחרון בכל רשת, מה מופיע בגוגל…" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
+<sc-if value="{{ p.vInterim }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">{{ p.vInterim }}</div></sc-if>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<button type="button" onClick="{{ h.extract }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:#141414">{{ p.extractLabel }}</button>
+<span style="font-size:12px;color:#6b6b6b">שום דבר לא נשמר בלי אישור שלכם.</span>
+</div>
+<sc-if value="{{ p.showAn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap"><label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b;flex:1;min-width:220px">מפתח Claude API (נשמר בדפדפן הזה בלבד)<input type="password" value="{{ p.anKey }}" onChange="{{ h.anKey }}" dir="ltr" placeholder="sk-ant-…" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px"></label><a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener" style="font-size:13px;padding:8px 0">קבלת מפתח ↗</a></div></sc-if>
+</div>
+</div>
+<sc-if value="{{ p.hasProp }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fbf9f8;border:1px dashed #d9cfcd;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:14px;font-weight:600;color:#141414">מה הבנתי מהתיעוד</div>
+<dl style="margin:0;display:grid;grid-template-columns:minmax(110px,auto) minmax(0,1fr);gap:6px 14px;font-size:13px">
+<sc-for list="{{ p.prop }}" as="x" hint-placeholder-count="4"><dt style="color:#6b6b6b">{{ x.k }}</dt><dd style="margin:0;color:#141414">{{ x.v }}</dd></sc-for>
+</dl>
+<sc-if value="{{ p.propEmpty }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">לא זיהיתי ממצאים מפורשים. נסו לפרט יותר.</div></sc-if>
+<div style="display:flex;gap:8px"><button type="button" onClick="{{ h.applyProp }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:10px;padding:8px 16px;font-size:13px">אישור ושמירה בבדיקות</button><button type="button" onClick="{{ h.dropProp }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:8px 14px;font-size:13px">ביטול</button></div>
+</div>
+</sc-if>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px;align-items:start">
+
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">א · האתר</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.site.c }};background:{{ p.pill.site.bg }};border:1px {{ p.pill.site.bs }} {{ p.pill.site.bd }}">{{ p.pill.site.t }}</span></div>
+<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">כמה האתר עדכני, רספונסיבי ומציג את העבודה. המדידה האוטומטית בודקת מובייל וביצועים; ההתרשמות העיצובית היא שלכם. <a href="{{ p.siteHref }}" target="_blank" rel="noopener">פתיחת האתר ↗</a></p>
+<sc-if value="{{ p.hasAuto }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:14px;align-items:flex-start;background:#fbf9f8;border:1px solid #f3eeed;border-radius:14px;padding:14px">
+<sc-if value="{{ p.shot }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="צילום מסך מובייל" style="width:96px;aspect-ratio:9/19;border-radius:8px;border:1px solid #efe7e5;flex:none;background-image:url({{ p.shot }});background-size:cover;background-position:top center"></div></sc-if>
+<div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px">
+<sc-for list="{{ p.autoRows }}" as="m" hint-placeholder-count="5"><div><div style="font-size:12px;color:#6b6b6b">{{ m.k }}</div><div style="font-size:14px;font-weight:600;color:{{ m.c }};overflow-wrap:anywhere">{{ m.v }}</div></div></sc-for>
+</div>
+</div>
+<div style="font-size:12px;color:#6b6b6b">{{ p.autoNote }}</div>
+</sc-if>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">מסקנה<select value="{{ p.web.res }}" onChange="{{ h.siteRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="outdated">מיושן, דורש חידוש</option><option value="modern">עדכני</option><option value="na">אין אתר / לא רלוונטי</option></select></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">שנה משוערת של האתר<input value="{{ p.web.year }}" onChange="{{ h.siteYear }}" placeholder="למשל 2017" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b;grid-column:1 / -1">מה ראיתם<textarea value="{{ p.web.notes }}" onChange="{{ h.siteNotes }}" rows="2" placeholder="עיצוב, hover, מובייל, איך מוצגים הפרויקטים" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0;resize:vertical;font-family:inherit"></textarea></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.web.date }}" onChange="{{ h.siteDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">ראיה<input value="{{ p.web.ev }}" onChange="{{ h.siteEv }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+</div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ב · נראות בגוגל</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.org.c }};background:{{ p.pill.org.bg }};border:1px {{ p.pill.org.bs }} {{ p.pill.org.bd }}">{{ p.pill.org.t }}</span></div>
+<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">שם העסק: האם האתר הרשמי בחמש התוצאות האורגניות הראשונות. מונח ענפי: האם העסק מופיע בכלל. <a href="{{ p.L.google }}" target="_blank" rel="noopener">פתיחת מקור מחקר ↗</a></p>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">חיפוש שם העסק
+<select value="{{ p.org.res }}" onChange="{{ h.orgRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="not5">האתר הרשמי לא בחמש הראשונות</option><option value="top5">האתר הרשמי בחמש הראשונות</option><option value="na">לא רלוונטי</option></select></label>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">מונח שנבדק<input value="{{ p.org.term }}" onChange="{{ h.orgTerm }}" placeholder="{{ p.term }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">מיקום (אם אומת)<input type="number" min="1" value="{{ p.org.pos }}" onChange="{{ h.orgPos }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">אתר רשמי שנבדק<input value="{{ p.org.site }}" onChange="{{ h.orgSite }}" placeholder="{{ p.siteShort }}" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0;text-align:right"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">שוק / אזור<input value="{{ p.org.region }}" onChange="{{ h.orgRegion }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.org.date }}" onChange="{{ h.orgDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">ראיה (קישור / צילום)<input value="{{ p.org.ev }}" onChange="{{ h.orgEv }}" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0;text-align:right"></label>
+</div>
+<div style="border-top:1px solid #f3eeed;padding-top:12px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:14px;font-weight:600;color:#141414">מונח ענפי</span><a href="{{ p.L.kw }}" target="_blank" rel="noopener" style="font-size:13px">חיפוש המונח בגוגל ↗</a></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b;grid-column:1 / -1">מונח שנבדק<input value="{{ p.org.kw }}" onChange="{{ h.kw }}" placeholder="למשל: מערכות מיזוג אוויר לפרויקטים" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תוצאה<select value="{{ p.org.kwRes }}" onChange="{{ h.kwRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="notfound">העסק לא נמצא בעמודים שנבדקו</option><option value="found">העסק נמצא</option></select></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">עמודים שנבדקו<input type="number" min="1" value="{{ p.org.kwPages }}" onChange="{{ h.kwPages }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+</div>
+</div>
+<div style="font-size:12px;color:#6b6b6b">דירוג ממותג חלש הוא סימן להזדמנות, לא הוכחה להיקף ההשקעה השיווקית.</div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ג · קמפיינים פעילים</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.ads.c }};background:{{ p.pill.ads.bg }};border:1px {{ p.pill.ads.bs }} {{ p.pill.ads.bd }}">{{ p.pill.ads.t }}</span></div>
+<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">בדיקה נפרדת לכל פלטפורמה. אם אין כיסוי, מסמנים "לא ניתן לאמת" ולא "אין מודעות". לא מסיקים תקציב.</p>
+<sc-for list="{{ p.adRows }}" as="a" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:center">
+<span style="font-size:14px;font-weight:500" dir="ltr">{{ a.name }}</span>
+<select value="{{ a.v }}" onChange="{{ a.on }}" aria-label="{{ a.name }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 8px;font-size:13px;color:#141414;min-width:0;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="none">לא נמצאו מודעות פעילות</option><option value="active">נמצאו מודעות פעילות</option><option value="unable">לא ניתן לאמת</option></select>
+<input value="{{ a.ev }}" onChange="{{ a.onEv }}" placeholder="קישור ראיה" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:13px;color:#141414;min-width:0;text-align:right">
+<a href="{{ a.href }}" target="_blank" rel="noopener" style="font-size:13px;white-space:nowrap">מקור ↗</a>
+</div>
+</sc-for>
+<label style="display:flex;gap:10px;align-items:center;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.ads.date }}" onChange="{{ h.adsDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:14px;color:#141414"></label>
+<div style="font-size:12px;color:#6b6b6b">TikTok: שקיפות מודעות זמינה בעיקר לאירופה; בישראל לרוב "לא ניתן לאמת". לא חובה לסיכום הבדיקה.</div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ד · Google Business Profile</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.gbp.c }};background:{{ p.pill.gbp.bg }};border:1px {{ p.pill.gbp.bs }} {{ p.pill.gbp.bd }}">{{ p.pill.gbp.t }}</span></div>
+<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">פרופיל עסק בגוגל מפות, כשהוא רלוונטי לסוג העסק. <a href="{{ p.L.maps }}" target="_blank" rel="noopener">פתיחה במפות ↗</a></p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תוצאה<select value="{{ p.gbp.res }}" onChange="{{ h.gbpRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">לא אומת</option><option value="notfound">לא נמצא</option><option value="found">נמצא</option><option value="other">מופיע עסק אחר</option><option value="na">לא רלוונטי</option></select></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.gbp.date }}" onChange="{{ h.gbpDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">קישור לפרופיל<input value="{{ p.gbp.url }}" onChange="{{ h.gbpUrl }}" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0;text-align:right"></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">ראיה<input value="{{ p.gbp.ev }}" onChange="{{ h.gbpEv }}" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0;text-align:right"></label>
+</div>
+</div>
+
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ה · רשתות חברתיות פעילות</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.soc.c }};background:{{ p.pill.soc.bg }};border:1px {{ p.pill.soc.bs }} {{ p.pill.soc.bd }}">{{ p.pill.soc.t }}</span></div>
+<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">רק חשבונות רשמיים שאומתו. פעיל = פרסום ב-<input type="number" min="1" value="{{ days }}" onChange="{{ h.days }}" aria-label="סף ימים" style="width:56px;background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:8px;padding:2px 6px;font-size:13px"> הימים האחרונים.</p>
+<sc-for list="{{ p.socRows }}" as="s" hint-placeholder-count="5">
+<div style="display:grid;grid-template-columns:78px minmax(0,1.4fr) 132px 64px auto;gap:8px;align-items:center">
+<span style="font-size:13px;font-weight:500" dir="ltr">{{ s.name }}</span>
+<input value="{{ s.url }}" onChange="{{ s.onUrl }}" placeholder="קישור לפרופיל" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:13px;color:#141414;min-width:0;text-align:right">
+<input type="date" value="{{ s.last }}" onChange="{{ s.onLast }}" aria-label="פרסום אחרון" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 8px;font-size:13px;color:#141414;min-width:0">
+<span style="font-size:12px;color:{{ s.hc }}">{{ s.hint }}</span>
+<a href="{{ s.href }}" target="_blank" rel="noopener" style="font-size:13px;white-space:nowrap">חיפוש ↗</a>
+</div>
+</sc-for>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">מסקנה<select value="{{ p.soc.res }}" onChange="{{ h.socRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="inactive">אין נוכחות פעילה רלוונטית</option><option value="active">נמצאה נוכחות פעילה</option><option value="na">לא רלוונטי</option></select></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.soc.date }}" onChange="{{ h.socDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+</div>
+<sc-if value="{{ p.soc.ev }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#3a3a3a;white-space:pre-line">{{ p.soc.ev }}</div></sc-if>
+<sc-if value="{{ p.socSuggest }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#6b6b6b">{{ p.socSuggest }}</div></sc-if>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px;align-items:start;margin-top:8px">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">אלון / ניצן</h3>
+<div role="group" aria-label="סטטוס אלון / ניצן" style="display:flex;gap:4px;flex-wrap:wrap">
+<sc-for list="{{ p.statuses }}" as="s" hint-placeholder-count="5">
+<button type="button" onClick="{{ s.go }}" aria-pressed="{{ s.on }}" style="border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.color }};border-radius:999px;padding:5px 12px;font-size:12px;font-weight:500">{{ s.t }}</button>
+</sc-for>
+</div>
+<textarea value="{{ p.rev.notes }}" onChange="{{ h.revNotes }}" rows="3" placeholder="מה הם אמרו בפועל: רקע, רגישויות, למי לפנות" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
+<label style="display:flex;gap:10px;align-items:center;font-size:12px;color:#6b6b6b">התקבל בתאריך<input type="date" value="{{ p.rev.date }}" onChange="{{ h.revDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:14px;color:#141414"></label>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">שיחה ומשימות</h3>
+<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תוצאת שיחה<select value="{{ p.call.outcome }}" onChange="{{ h.callOutcome }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם התקיימה</option><option value="quote">התבקשה הצעת מחיר</option><option value="meeting">פגישה עם אלון / ניצן</option><option value="opp">זוהתה הזדמנות</option><option value="service">בעיית שירות</option><option value="callback">התבקשה חזרה במועד מסוים</option><option value="noneed">אין צורך</option><option value="notint">לא מעוניין</option><option value="noanswer">אין מענה</option></select></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך<input type="date" value="{{ p.call.date }}" onChange="{{ h.callDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+</div>
+<textarea value="{{ p.call.notes }}" onChange="{{ h.callNotes }}" rows="2" placeholder="סיכום השיחה" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
+<sc-if value="{{ p.callHint }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:{{ p.callHintColor }}">{{ p.callHint }}</div></sc-if>
+<sc-for list="{{ p.actions }}" as="a" hint-placeholder-count="0">
+<div style="display:flex;gap:10px;align-items:center;font-size:14px;padding:6px 0;border-top:1px solid #f3eeed">
+<button type="button" onClick="{{ a.toggle }}" aria-pressed="{{ a.done }}" aria-label="סימון כבוצע" style="width:20px;height:20px;border-radius:6px;border:1px solid #d9cfcd;background:{{ a.bg }};color:#ffffff;font-size:12px;padding:0;line-height:1">{{ a.mark }}</button>
+<span style="flex:1;color:{{ a.color }}">{{ a.text }}</span><span style="font-size:12px;color:#6b6b6b">{{ a.meta }}</span>
+<button type="button" onClick="{{ a.rm }}" style="border:0;background:transparent;color:#6b6b6b;font-size:13px">מחיקה</button>
+</div>
+</sc-for>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 140px 140px auto;gap:8px">
+<input value="{{ d.aText }}" onChange="{{ h.dAText }}" placeholder="משימה או התחייבות" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;min-width:0">
+<select value="{{ d.aKind }}" onChange="{{ h.dAKind }}" aria-label="סוג" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px;font-size:13px;color:#141414;min-width:0;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="deliver">התחייבות / תוצר</option><option value="callback">חזרה שסוכמה</option><option value="call">שיחה ראשונה</option><option value="review">אישור הנהלה</option><option value="research">מחקר</option></select>
+<input type="date" value="{{ d.aDue }}" onChange="{{ h.dADue }}" aria-label="מועד" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px;font-size:13px;color:#141414;min-width:0">
+<button type="button" onClick="{{ h.addAction }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px">הוספה</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:80;background:#141414;color:#ffffff;border-radius:12px;padding:12px 20px;font-size:14px;font-weight:500;box-shadow:0 20px 50px -10px rgba(0,0,0,.6)">{{ toast }}</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;overview&quot;,&quot;clients&quot;,&quot;next10&quot;,&quot;actions&quot;],&quot;default&quot;:&quot;overview&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;pageSize&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:60,&quot;min&quot;:20,&quot;max&quot;:334,&quot;tsType&quot;:&quot;number&quot;}}">
+const K={name:'לקוח ב-CRM',site:'אתר ב-CRM',brand:'שם מותג / שם לחיפוש',projects:'מספר פרויקטים',services:'שירותים פעילים',past:'שיווק בעבר',last:'תאריך פעילות אחרונה',contact:'איש קשר',stage:'שלב בדיקה'};
+const LS='w3d-opp-v1',LS_SRC='w3d-opp-src-v1';
+const today=()=>new Date().toISOString().slice(0,10);
+const CHECKS=[['site','עיצוב אתר'],['org','גוגל'],['ads','קמפיינים'],['gbp','Google Business'],['soc','רשתות']];const NC=CHECKS.length;
+const ST={gap:{t:'הזדמנות',c:'#c62f36',bg:'#fdeced',bd:'#f8c9cb',bs:'solid'},ok:{t:'אין פער',c:'#1d5b31',bg:'#eaf7ee',bd:'#cfe9d7',bs:'solid'},un:{t:'לא אומת',c:'#6b6b6b',bg:'transparent',bd:'#d9cfcd',bs:'dashed'},na:{t:'לא רלוונטי',c:'#6b6b6b',bg:'#f6f1f0',bd:'#efe7e5',bs:'solid'}};
+const REV=[['awaiting','ממתין לתשובה'],['feedback','התקבל משוב'],['approved','אושר לפנייה'],['hold','השהיה'],['dnc','לא לפנות']];
+const REVC={awaiting:'#3a3a3a',feedback:'#1f5fc4',approved:'#1d5b31',hold:'#8a4b00',dnc:'#c62f36'};
+const REVBG={awaiting:'#f6f1f0',feedback:'#eef4ff',approved:'#eaf7ee',hold:'#fff4e5',dnc:'#fdeced'};
+const OUT={quote:'התבקשה הצעת מחיר',meeting:'פגישה עם אלון / ניצן',opp:'זוהתה הזדמנות',service:'בעיית שירות',callback:'התבקשה חזרה במועד מסוים',noneed:'אין צורך',notint:'לא מעוניין',noanswer:'אין מענה'};
+const COMMIT=['quote','meeting','opp','service','callback'];
+const KIND={deliver:'התחייבות / תוצר',callback:'חזרה שסוכמה',call:'שיחה ראשונה',review:'אישור הנהלה',research:'מחקר'};
+const SOC=[['fb','Facebook'],['ig','Instagram'],['li','LinkedIn'],['tt','TikTok'],['yt','YouTube']];
+const DEF=()=>({brand:'',sites:[],contacts:[],note:'',hold:'',voice:[],site:{res:'',year:'',notes:'',date:'',ev:'',auto:null},org:{res:'',term:'',pos:'',site:'',region:'ישראל',date:'',ev:'',kw:'',kwRes:'',kwPages:''},ads:{google:'',meta:'',tiktok:'',gEv:'',mEv:'',tEv:'',date:''},gbp:{res:'',url:'',date:'',ev:''},soc:{res:'',date:'',ev:'',p:{}},rev:{status:'',notes:'',date:''},call:{outcome:'',date:'',notes:''},actions:[]});
+function mk(R,id){const d=DEF(),r=R[id]||{};const o={...d,...r};['site','org','ads','gbp','soc','rev','call'].forEach(k=>o[k]={...d[k],...(r[k]||{})});o.soc.p={...(o.soc.p||{})};return o;}
+function stat(o){
+  const site={outdated:'gap',modern:'ok',na:'na'}[o.site.res]||'un';
+  const b={top5:'ok',not5:'gap',na:'na'}[o.org.res]||'un',kwS={notfound:'gap',found:'ok'}[o.org.kwRes]||'un';
+  const org=b==='gap'||kwS==='gap'?'gap':b==='ok'||kwS==='ok'?'ok':b;
+  const a=[o.ads.google,o.ads.meta,o.ads.tiktok];let ads='un';
+  if(a.includes('active'))ads='ok';else if(o.ads.google&&o.ads.meta&&a.includes('none'))ads='gap';
+  const gbp={found:'ok',notfound:'gap',other:'gap',na:'na'}[o.gbp.res]||'un';
+  const soc={active:'ok',inactive:'gap',na:'na'}[o.soc.res]||'un';
+  return{site,org,ads,gbp,soc};
+}
+function links(term,kw,dom){const q=encodeURIComponent(term||'');return{kw:`https://www.google.com/search?q=${encodeURIComponent(kw||term||'')}&gl=il&hl=iw&pws=0`,google:`https://www.google.com/search?q=${q}&gl=il&hl=iw&pws=0`,gads:dom?`https://adstransparency.google.com/?region=IL&domain=${encodeURIComponent(dom)}`:`https://adstransparency.google.com/?region=IL&query=${q}`,meta:`https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=IL&q=${q}&search_type=keyword_unordered`,tiktok:`https://library.tiktok.com/ads?region=all&adv_name=${q}`,maps:`https://www.google.com/maps/search/?api=1&query=${q}`,fb:`https://www.facebook.com/search/pages/?q=${q}`,ig:`https://www.google.com/search?q=${q}%20site%3Ainstagram.com`,li:`https://www.linkedin.com/search/results/companies/?keywords=${q}`,tt:`https://www.google.com/search?q=${q}%20site%3Atiktok.com`,yt:`https://www.youtube.com/results?search_query=${q}`};}
+const href=u=>!u?'':/^https?:\/\//i.test(u)?u:'https://'+u;
+const short=u=>(u||'').replace(/^https?:\/\//i,'').replace(/^www\./i,'').replace(/\/$/,'');
+const fmt=d=>d?d.split('-').reverse().join('.'):'—';
+const ageDays=d=>d?Math.floor((Date.now()-new Date(d).getTime())/864e5):null;
+function csvCell(v){v=String(v??'');return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+function parseCSV(t){t=t.replace(/^\uFEFF/,'');const rows=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=ch}else if(ch==='"')q=true;else if(ch===','){row.push(f);f=''}else if(ch==='\n'){row.push(f);rows.push(row);row=[];f=''}else if(ch!=='\r')f+=ch}if(f||row.length){row.push(f);rows.push(row)}return rows.filter(r=>r.some(x=>x.trim()));}
+function download(name,text,type){const b=new Blob([text],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);}
+
+const SEED_DATE='2026-11-12';
+const SEED=[
+['w3d-091',{fb:'https://www.facebook.com/aclimline',ig:'https://www.instagram.com/aclimline/',yt:'https://www.youtube.com/channel/UClrrHYjKfEg2iHOAq5JTlDA'},'מהאתר הרשמי: קישורים ל-Facebook, Instagram, YouTube. עדכון אחרון של עמוד הבית לפי המטא-דאטה: 10.08.2021.'],
+['w3d-062',{fb:'https://www.facebook.com/kramerglass/',ig:'https://www.instagram.com/kramer_glass/'},'מהאתר הרשמי: Facebook ו-Instagram. קישור ה-YouTube באתר מוביל לסרטון בודד, לא לערוץ.'],
+['w3d-131',{fb:'https://www.facebook.com/Dror.Barda.Architects/'},'מהאתר הרשמי: Facebook בלבד. קישורי Instagram ו-YouTube באתר ריקים. קיימת גרסה עברית drorbarda.co.il. זכויות יוצרים באתר: 2018.',['drorbarda.co.il']],
+['w3d-115',{},'האתר לא היה נגיש לכלי המחקר בבדיקה הראשונה. לפי סיכום הקובץ: לאמת galesh.co.il מול gal-esh.co.il.'],
+['w3d-069',{fb:'https://www.facebook.com/1875447416069813/',yt:'https://www.youtube.com/channel/UCGMnFRyesX8czqu2nkS5DGQ',li:'https://www.linkedin.com/company/domaisrael'},'מהאתר הרשמי: Facebook, YouTube, LinkedIn.'],
+['w3d-014',{},'האתר הנוכחי נושא קרדיט עיצוב ופיתוח של Midnight Studio, לא WEB3D. כדאי לברר עם אלון / ניצן לפני פנייה. לא נמצאו קישורי רשתות באתר.'],
+['w3d-101',{fb:'https://www.facebook.com/travelqueen11',ig:'https://www.instagram.com/sharonatzadok/'},'מהאתר הרשמי: Facebook, Instagram (חשבון אישי של שרונה), WhatsApp. מותקן באתר Meta Pixel; זו אינה הוכחה לקמפיין פעיל.'],
+['w3d-324',{},''],['w3d-066',{},''],['w3d-078',{},'']];
+const PICK=[['w3d-091','חברת מיזוג אוויר הפונה לשוק העסקי והפרטי. באתר מופיעים פרויקטים ושירותים מקצועיים.','SEO, קידום פרויקטים, לידים'],['w3d-062','עסק למוצרי זכוכית, עם קטלוג, פרויקטים וחנות מפעל. יש אפשרות לבדוק את מסע הפנייה של לקוחות.','Google Business, קמפיינים, לידים'],['w3d-131','משרד אדריכלים עם פרויקטים ופורטפוליו. שווה לבדוק איך הוא מגיע ללקוחות חדשים.','מיתוג, SEO, תוכן'],['w3d-115','יצרנית ציוד ומכונות לתעשיית המזון. באתר מוצג מגוון רחב של פתרונות תעשייתיים.','SEO למוצרים, לידים B2B'],['w3d-069','עסק בענף הבנייה עם אחסון בריטיינר, ללא היסטוריית שיווק רשומה.','נוכחות דיגיטלית, קמפיינים'],['w3d-014','עסק תעשייתי עם פרויקט אחד מתועד. מתאים לבדיקת נוכחות דיגיטלית ממוקדת.','אתר, SEO, לידים B2B'],['w3d-101','עסק בתחום התיירות. שווה לבדוק פעילות חברתית ופרסום מול קהל צרכני.','Meta, תוכן, קמפיינים'],['w3d-324','משרד עם התמחות בהייטק, סטארטאפים וקניין רוחני. קיימת גם פעילות באתר נוסף לשירותי נוטריון.','SEO, ניהול לידים'],['w3d-066','לקוח עם אחסון בלבד וללא אינטראקציה מתועדת בקובץ.','בדיקת האתר והנוכחות'],['w3d-078','לקוח עם אחסון בלבד וללא שיחה מתועדת.','נוכחות מקומית, מדיה חברתית']];
+const SEED2=['w3d-091',{site:{res:'outdated',notes:'אתר מלפני 7-8 שנים לפחות, כנראה עיצוב בסגנון PS. אין תגובה ל-hover ואין רספונסיביות. יש פרויקטים יפים, אבל הם לא נגישים ולא מורגשים באתר.',ev:'בדיקה ידנית'},ads:{google:'none',meta:'none',gEv:'adstransparency.google.com · לא נמצאו מודעות',mEv:'Meta Ad Library · לא נמצאו מודעות'},soc:{res:'inactive',ev:'YouTube: יש ערוץ בלי סרטונים, לא פעיל.\nFacebook: פרסום אחרון לפני כחצי שנה.\nInstagram: היה פעיל ומושקע עד לפני כחצי שנה.',last:{fb:'2026-05-12',ig:'2026-05-12'}},gbp:{res:'other',ev:'בחיפוש שם העסק בגוגל מופיע בצד פרופיל של עסק אחר'},org:{kw:'מערכות מיזוג אוויר לפרויקטים',kwRes:'notfound',kwPages:'5',ev:'בדיקה ידנית'}}];
+const PICKM=Object.fromEntries(PICK.map(([id,w,d])=>[id,{why:w,dir:d}]));
+class Component extends DCLogic {
+  applySeed(){this.setState(s=>{const R={...s.R};SEED.forEach(([id,soc,note,sites])=>{const o=mk(R,id);Object.entries(soc).forEach(([k,u])=>{if(!(o.soc.p[k]&&o.soc.p[k].url))o.soc.p[k]={...(o.soc.p[k]||{}),url:u};});if(Object.keys(soc).length&&!o.soc.ev)o.soc.ev='קישורים מהאתר הרשמי · '+SEED_DATE;if(note&&!o.note)o.note=note;if(sites)sites.forEach(x=>{if(!o.sites.includes(x))o.sites.push(x);});if(!o.rev.status)o.rev.status='awaiting';R[id]=o;});
+    const next=[...s.next];SEED.forEach(([id])=>{if(!next.includes(id)&&next.length<10)next.push(id);});return{R,next,seed1:true};});}
+  applySeed2(){const [id,x]=SEED2;this.setState(s=>{const o=JSON.parse(JSON.stringify(mk(s.R,id)));const d=SEED_DATE;
+    if(!o.site.res)o.site={...o.site,...x.site,date:d};if(!o.ads.google&&!o.ads.meta)o.ads={...o.ads,...x.ads,date:d};if(!o.gbp.res)o.gbp={...o.gbp,...x.gbp,date:d};if(!o.org.kwRes)o.org={...o.org,...x.org,date:o.org.date||d};
+    if(!o.soc.res){o.soc.res=x.soc.res;o.soc.date=d;o.soc.ev=(o.soc.ev?o.soc.ev+'\n':'')+x.soc.ev;Object.entries(x.soc.last).forEach(([k,v])=>{o.soc.p[k]={...(o.soc.p[k]||{}),last:(o.soc.p[k]||{}).last||v};});}
+    return{R:{...s.R,[id]:o},seed2:true};});}
+  state={view:null,rec:false,vt:'',vInterim:'',vBusy:false,prop:null,auto:{},shots:{},pid:null,src:null,meta:null,R:{},next:[],set:{days:90},sentAt:'',q:'',gf:{},sf:'all',sort:'gaps',limit:null,menu:false,toast:'',loadErr:'',d:{site:'',cName:'',cRole:'',cPhone:'',cEmail:'',aText:'',aKind:'deliver',aDue:''}};
+  csvRef=React.createRef();bakRef=React.createRef();
+  componentDidMount(){
+    let saved=null;try{saved=JSON.parse(localStorage.getItem(LS)||'null');}catch(e){}
+    if(saved)this.setState({R:saved.R||{},next:saved.next||[],set:saved.set||{days:90},sentAt:saved.sentAt||'',seed1:!!saved.seed1,seed2:!!saved.seed2},()=>{const t=this.state;this._saved={R:t.R,next:t.next,set:t.set,sentAt:t.sentAt};this._loaded=true;if(!saved.seed1)this.applySeed();if(!saved.seed2)this.applySeed2();});
+    else{this._loaded=true;this.applySeed();this.applySeed2();}
+    let imp=null;try{imp=JSON.parse(localStorage.getItem(LS_SRC)||'null')}catch(e){}
+    if(imp&&imp.clients)this.setState({src:imp.clients,meta:imp});else this.loadFile();
+    this._key=e=>{if(e.key==='Escape'){if(this.state.pid){this.stopMic();this.setState({pid:null,rec:false});}else if(this.state.menu)this.setState({menu:false});}};
+    window.addEventListener('keydown',this._key);
+  }
+  componentWillUnmount(){window.removeEventListener('keydown',this._key);this.stopMic();}
+  stopMic(){if(this._rec){try{this._rec.abort()}catch(e){}this._rec=null;}}
+  mic(){if(this.state.rec){this._rec&&this._rec.stop();return;}const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return this.flash('הדפדפן לא תומך בהקלטה. נסו Chrome, או הקלידו.');
+    const r=new SR();r.lang='he-IL';r.continuous=true;r.interimResults=true;
+    r.onresult=e=>{let fin='',int='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;if(e.results[i].isFinal)fin+=t;else int+=t;}this.setState(s=>({vt:fin?((s.vt?s.vt.trim()+' ':'')+fin.trim()):s.vt,vInterim:int}));};
+    r.onerror=e=>this.flash(e.error==='not-allowed'||e.error==='service-not-allowed'?'אין הרשאה למיקרופון בדפדפן':e.error==='no-speech'?'לא נקלט דיבור':'שגיאת הקלטה: '+e.error);
+    r.onend=()=>{this._rec=null;this.setState({rec:false,vInterim:''});};
+    this._rec=r;try{r.start();this.setState({rec:true});}catch(e){this.flash('לא ניתן להתחיל הקלטה');}}
+  async extract(id,name){const t=(this.state.vt||'').trim();if(!t)return this.flash('אין טקסט לעיבוד');const anKey=(this.state.set.anKey||'').trim();const hasHost=!!(window.claude&&window.claude.complete);if(!hasHost&&!anKey){this.setState({needAn:true});return this.flash('הוסיפו מפתח Claude API כדי לעבד את הטקסט');}if(this.state.vBusy)return;this.setState({vBusy:true});
+    const days=+this.state.set.days||90;
+    const sys=`You extract research findings that a marketer dictated or typed (Hebrew) about one client business. Today is ${today()}. Return ONLY minified JSON, no prose. Use null for anything NOT explicitly stated. Never guess or infer beyond the words.\nShape: {"site":{"res":"outdated|modern|null","year":"string|null","notes":"short Hebrew summary of what they said about the website|null"},"org":{"brand":"top5|not5|null","kw":"non-brand search term they checked|null","kwRes":"found|notfound|null","kwPages":"number of result pages checked|null"},"ads":{"google":"none|active|null","meta":"none|active|null","tiktok":"none|active|unable|null"},"gbp":{"res":"found|notfound|other|null","note":"Hebrew|null"},"soc":{"fb":{"last":"YYYY-MM-DD|null","note":"Hebrew|null"},"ig":{},"li":{},"tt":{},"yt":{},"res":"active|inactive|null"},"note":"other useful Hebrew note|null"}\nRules: Facebook/Meta ad library = ads.meta; Google ads transparency = ads.google. gbp "other" = a different business shows up instead of theirs. Convert relative dates (e.g. לפני חצי שנה) to an approximate YYYY-MM-DD counted back from today. soc.res "inactive" only if all mentioned profiles were last active more than ${days} days ago or are described as inactive; "active" if any was active within ${days} days. ig/li/tt/yt use the same shape as fb.`;
+    try{const msgs=[{role:'user',content:`לקוח: ${name}\n\nתיעוד:\n${t}`}];let out;
+      if(hasHost&&!anKey)out=await window.claude.complete({system:sys,max_tokens:1500,messages:msgs});
+      else{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'content-type':'application/json','x-api-key':anKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1500,system:sys,messages:msgs})});const d=await r.json();if(d.error)throw new Error(d.error.message);out=(d.content||[]).map(c=>c.text||'').join('');}const j=JSON.parse(out.slice(out.indexOf('{'),out.lastIndexOf('}')+1));this.setState({prop:{id,j},vBusy:false});}
+    catch(e){this.setState({vBusy:false});this.flash(/api.key|auth/i.test(e.message||'')?'מפתח Claude API לא תקין':'לא הצלחתי לעבד את הטקסט. נסו שוב.');}}
+  propRows(j){const R=[];const A={outdated:'מיושן',modern:'עדכני',na:'לא רלוונטי',top5:'בחמש הראשונות',not5:'לא בחמש הראשונות',found:'נמצא',notfound:'לא נמצא',other:'מופיע עסק אחר',none:'לא נמצאו מודעות',active:'נמצאו מודעות פעילות',unable:'לא ניתן לאמת'};const t=v=>A[v]||v;
+    const s=j.site||{};if(s.res)R.push(['אתר',t(s.res)]);if(s.year)R.push(['שנה משוערת',s.year]);if(s.notes)R.push(['על האתר',s.notes]);
+    const g=j.org||{};if(g.brand)R.push(['חיפוש שם העסק',t(g.brand)]);if(g.kw)R.push(['מונח ענפי',g.kw]);if(g.kwRes)R.push(['תוצאה למונח',t(g.kwRes)+(g.kwPages?` (${g.kwPages} עמודים)`:'')]);
+    const a=j.ads||{};[['google','Google Ads'],['meta','Meta'],['tiktok','TikTok']].forEach(([k,n])=>{if(a[k])R.push([n,t(a[k])]);});
+    const b=j.gbp||{};if(b.res)R.push(['Google Business',t(b.res)+(b.note?' · '+b.note:'')]);
+    const so=j.soc||{};SOC.forEach(([k,n])=>{const x=so[k];if(x&&(x.last||x.note))R.push([n,[x.last?'פרסום אחרון בערך '+fmt(x.last):'',x.note||''].filter(Boolean).join(' · ')]);});if(so.res)R.push(['מסקנת רשתות',so.res==='active'?'נוכחות פעילה':'אין נוכחות פעילה']);
+    if(j.note)R.push(['הערה',j.note]);return R.map(([k,v])=>({k,v:String(v)}));}
+  applyProp(){const P=this.state.prop;if(!P)return;const j=P.j,td=today(),ev='תיעוד קולי · '+fmt(td),vt=this.state.vt;const ok=(v,l)=>l.includes(v)?v:'';const add=(a,b)=>a?(a+'\n'+b):b;
+    this.setR(P.id,o=>{const s=j.site||{};const sr=ok(s.res,['outdated','modern','na']);if(sr)o.site.res=sr;if(s.year)o.site.year=String(s.year);if(s.notes)o.site.notes=add(o.site.notes,s.notes);if(sr||s.notes){o.site.date=o.site.date||td;o.site.ev=o.site.ev||ev;}
+      const g=j.org||{};const br=ok(g.brand,['top5','not5']);if(br)o.org.res=br;if(g.kw)o.org.kw=g.kw;const kr=ok(g.kwRes,['found','notfound']);if(kr)o.org.kwRes=kr;if(g.kwPages)o.org.kwPages=String(g.kwPages);if(br||kr){o.org.date=o.org.date||td;o.org.ev=o.org.ev||ev;}
+      const a=j.ads||{};let anyA=false;[['google','gEv'],['meta','mEv'],['tiktok','tEv']].forEach(([k,e])=>{const v=ok(a[k],['none','active','unable']);if(v){o.ads[k]=v;o.ads[e]=o.ads[e]||ev;anyA=true;}});if(anyA)o.ads.date=o.ads.date||td;
+      const b=j.gbp||{};const gr=ok(b.res,['found','notfound','other']);if(gr){o.gbp.res=gr;o.gbp.date=o.gbp.date||td;o.gbp.ev=add(o.gbp.ev,(b.note?b.note+' · ':'')+ev);}
+      const so=j.soc||{};let anyS=false;SOC.forEach(([k,n])=>{const x=so[k];if(!x)return;if(x.last&&/^\d{4}-\d{2}-\d{2}$/.test(x.last)){o.soc.p[k]={...(o.soc.p[k]||{}),last:x.last};anyS=true;}if(x.note){o.soc.ev=add(o.soc.ev,n+': '+x.note);anyS=true;}});const s2=ok(so.res,['active','inactive']);if(s2){o.soc.res=s2;anyS=true;}if(anyS)o.soc.date=o.soc.date||td;
+      if(j.note)o.note=add(o.note,j.note);o.voice=[...(o.voice||[]),{date:td,text:vt}];});
+    this.setState({prop:null,vt:''});this.flash('הממצאים נשמרו בבדיקות');}
+  async runAuto(id,site){if(!site)return this.flash('אין אתר מתועד לבדיקה');if(this.state.auto[id]==='busy')return;this.setState(s=>({auto:{...s.auto,[id]:'busy'}}));
+    const u=href(site);const key=(this.state.set.psKey||'').trim();const api=`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(u)}&strategy=mobile&category=performance&category=seo&category=best-practices&locale=he`+(key?`&key=${encodeURIComponent(key)}`:'');
+    try{const r=await fetch(api);const d=await r.json();if(d.error)throw new Error(d.error.message);const L=d.lighthouseResult,A=L.audits||{},C=L.categories||{};const sc=k=>C[k]&&C[k].score!=null?Math.round(C[k].score*100):null;
+      const libs=(((A['js-libraries']||{}).details||{}).items||[]).map(x=>x.name+(x.version?' '+x.version:''));const stack=(L.stackPacks||[]).map(x=>x.title);
+      const auto={date:today(),url:L.finalUrl||L.finalDisplayedUrl||u,perf:sc('performance'),seo:sc('seo'),bp:sc('best-practices'),viewport:(A.viewport||{}).score===1,https:(A['is-on-https']||{}).score===1,lcp:(A['largest-contentful-paint']||{}).displayValue||'',tech:[...stack,...libs].slice(0,6)};
+      const shot=((A['final-screenshot']||{}).details||{}).data||'';
+      this.setR(id,o=>{o.site.auto=auto;});this.setState(s=>({auto:{...s.auto,[id]:''},shots:{...s.shots,[id]:shot}}));this.flash('בדיקת האתר הושלמה');}
+    catch(e){const m=e.message||'';const msg=/quota/i.test(m)?(key?'נגמרה המכסה היומית של המפתח. היא מתאפסת מחר.':'נגמרה המכסה החינמית המשותפת של גוגל. הוסיפו מפתח API משלכם (חינמי) למטה, או פתחו את הבדיקה ידנית.'):/API key|key not valid/i.test(m)?'מפתח ה-API לא תקין. בדקו אותו למטה.':'הבדיקה נכשלה ('+(m||'שגיאת רשת')+'). נסו שוב, או פתחו את הבדיקה ידנית.';this.setState(s=>({auto:{...s.auto,[id]:msg}}));}}
+  componentDidUpdate(){const s=this.state;if(!this._loaded)return;const k=this._saved||{};if(k.R!==s.R||k.next!==s.next||k.set!==s.set||k.sentAt!==s.sentAt){this._saved={R:s.R,next:s.next,set:s.set,sentAt:s.sentAt};clearTimeout(this._t);this._t=setTimeout(()=>{try{localStorage.setItem(LS,JSON.stringify({R:this.state.R,next:this.state.next,set:this.state.set,sentAt:this.state.sentAt,seed1:!!this.state.seed1,seed2:!!this.state.seed2}))}catch(e){this.flash('שמירה נכשלה: אין מקום באחסון הדפדפן')}},250);}}
+  loadFile(){fetch('clients-data.json').then(r=>r.json()).then(d=>this.setState({src:d.clients,meta:{source:d.source,importedAt:d.importedAt,header:d.header}})).catch(()=>this.setState({loadErr:'לא ניתן לטעון את קובץ הלקוחות. ייבאו CSV מתפריט "נתונים ויבוא".',src:[]}));}
+  flash(t){clearTimeout(this._ft);this.setState({toast:t});this._ft=setTimeout(()=>this.setState({toast:''}),2600);}
+  setR(id,fn){this.setState(s=>{const o=JSON.parse(JSON.stringify(mk(s.R,id)));return{R:{...s.R,[id]:fn(o)||o}};});}
+  setP(id,path,val,stamp){this.setR(id,o=>{const ks=path.split('.');let t=o;for(let i=0;i<ks.length-1;i++){t[ks[i]]=t[ks[i]]||{};t=t[ks[i]];}t[ks[ks.length-1]]=val;if(stamp&&val&&!o[ks[0]].date)o[ks[0]].date=today();return o;});}
+  toggleNext(id){this.setState(s=>{if(s.next.includes(id))return{next:s.next.filter(x=>x!==id)};if(s.next.length>=10){this.flash('הרשימה מלאה: 10 לקוחות');return null;}const o=mk(s.R,id);const R=o.rev.status?s.R:{...s.R,[id]:{...o,rev:{...o.rev,status:'awaiting'}}};return{next:[...s.next,id],R};});}
+  rows(){
+    const {src,R}=this.state;if(this._c&&this._c.src===src&&this._c.R===R)return this._c.v;
+    const v=(src||[]).map(c=>{const o=mk(R,c.id);const st=stat(o);const ks=CHECKS.map(x=>x[0]);const gaps=ks.filter(k=>st[k]==='gap').length,done=ks.filter(k=>st[k]!=='un').length;const last=[o.site.date,o.org.date,o.ads.date,o.gbp.date,o.soc.date].filter(Boolean).sort().pop()||'';return{id:c.id,c,o,st,gaps,done,last,name:c.src[K.name]||'(ללא שם)',site:(()=>{const raw=(c.src[K.site]||'').trim();return /^(https?:\/\/|www\.)/i.test(raw)||/^[^\s]+\.[a-z]{2,}(\/|$)/i.test(raw)?raw:'';})(),hold:o.hold,rev:o.rev.status,projects:+c.src[K.projects]||0};});
+    this._c={src,R,v};return v;
+  }
+  rel(c){const s=c.src;const bits=[];if(s[K.services]&&s[K.services]!=='לא מתועד')bits.push(s[K.services]);if(s[K.projects])bits.push(s[K.projects]+' פרויקטים');if(s[K.past]&&s[K.past]!=='לא מתועד')bits.push('בעבר: '+s[K.past]);bits.push('פעילות אחרונה: '+(s[K.last]||'לא מתועד'));return bits.join(' · ');}
+  gapNames(r){return CHECKS.filter(([k])=>r.st[k]==='gap').map(x=>x[1]);}
+  packet(){const all=this.rows();const L=this.state.next.map(id=>all.find(r=>r.id===id)).filter(Boolean);return L;}
+  renderVals(){
+    const s=this.state,P=this.props;const view=s.view||P.defaultView||'overview';const limit=s.limit||P.pageSize||60;
+    const all=this.rows();const loading=!s.src||!!s.loadErr;
+    const open=id=>()=>{this.stopMic();this.setState({pid:id,menu:false,rec:false,vt:'',vInterim:'',prop:null,d:{...s.d,site:'',cName:'',cRole:'',cPhone:'',cEmail:'',aText:'',aDue:''}});};
+    const go=v=>()=>this.setState({view:v,menu:false});
+    const doneText=r=>`${r.done} מתוך ${NC} בדיקות הושלמו`;
+    const nextIn=id=>s.next.includes(id);
+    const nav=[['overview','סקירה'],['clients','לקוחות'],['next10','10 הבאים'],['actions','הפעולות שלי']].map(([v,t])=>({t,go:go(v),cur:view===v?'page':undefined,bg:view===v?'#ffffff':'transparent',sh:view===v?'0 2px 10px rgba(20,20,20,.08)':'none',color:view===v?'#141414':'#6b6b6b',hasCount:v==='next10'&&s.next.length>0,count:s.next.length}));
+    const active=all.filter(r=>!r.hold);
+    const screened=all.filter(r=>r.done===NC).length,withGaps=all.filter(r=>r.gaps>0).length,ready=active.filter(r=>r.done===NC&&r.gaps>0&&!r.rev).length;
+    const stats=[{t:'לקוחות שיובאו',v:all.length,sub:s.meta?('מתוך '+(s.meta.source||'CSV')):'',c:'#141414'},{t:'נבדקו במלואם',v:screened,sub:`${all.filter(r=>r.done>0&&r.done<NC).length} בתהליך · ${all.filter(r=>r.done===0).length} טרם נבדקו`,c:'#141414'},{t:'עם פער מאומת',v:withGaps,sub:'לפחות בדיקה אחת עם ראיה',c:withGaps?'#F0565C':'#141414'},{t:'מוכנים לסקירה פנימית',v:ready,sub:'נבדקו במלואם, יש פער, ללא השהיה',c:ready?'#1f5fc4':'#141414'}];
+    const byGaps=(a,b)=>(!!a.hold-!!b.hold)||b.gaps-a.gaps||b.done-a.done||a.name.localeCompare(b.name,'he');
+    const sl=active.filter(r=>r.gaps>0&&!['dnc','hold'].includes(r.rev)).sort(byGaps);
+    const shortlist=sl.slice(0,8).map(r=>({name:r.name,gapNames:this.gapNames(r),doneText:doneText(r),open:open(r.id),inNext:nextIn(r.id),nextLabel:nextIn(r.id)?'ב-10 הבאים ✓':'+ ל-10 הבאים',toggleNext:()=>this.toggleNext(r.id)}));
+    const byId=Object.fromEntries(all.map(r=>[r.id,r]));
+    const queue=PICK.filter(([id])=>byId[id]).map(([id,why,dir],i)=>{const r=byId[id];return{num:i+1,name:r.name,why,dir,doneText:doneText(r),open:open(id),inNext:nextIn(id),nextLabel:nextIn(id)?'ב-10 הבאים ✓':'+ ל-10 הבאים',toggleNext:()=>this.toggleNext(id)};});
+    const revd=all.filter(r=>['feedback','approved','hold','dnc'].includes(r.rev)).length,appr=all.filter(r=>r.rev==='approved').length,called=all.filter(r=>r.o.call.outcome).length;
+    const flowRaw=[['יבוא',all.length+' רשומות'],['מחקר חמש הבדיקות',screened+' הושלמו'],['דירוג לפי פערים מאומתים',withGaps+' עם פער'],['בחירת 10 הבאים',s.next.length+' / 10'],['קבלת משוב מאלון / ניצן',revd+' התקבלו'],['הכנה לשיחה',appr+' אושרו'],['שיחה',called+' תועדו'],['תיעוד תוצאה','']];
+    const vals=[all.length,screened,withGaps,s.next.length,revd,appr,called,called];
+    const flow=flowRaw.map(([t,v],i)=>({n:i+1,t,v,bg:vals[i]?'#F0565C':'#efe7e5',fc:vals[i]?'#ffffff':'#6b6b6b'}));
+    const integrations=[{t:'בדיקת אתר',d:'Google PageSpeed: ביצועים במובייל, התאמה למובייל, HTTPS, טכנולוגיות. רץ ישירות מהלוח.',s:'אוטומטי'},{t:'תיעוד קולי',d:'זיהוי דיבור בדפדפן (Chrome), ו-Claude ממלא את שדות הבדיקות. נשמר רק אחרי אישור.',s:'אוטומטי'},{t:'גוגל: שם ומונחים ענפיים',d:'SerpAPI / DataForSEO / Google Custom Search. דורש שרת ומפתח API.',s:'דורש מפתח'},{t:'Google Business',d:'Places API מחזיר איזה עסק מופיע לשם, ומזהה גם מקרה של עסק אחר. דורש מפתח.',s:'דורש מפתח'},{t:'Google Ads',d:'אין API רשמי. שירותי צד ג׳ (למשל SerpAPI) סורקים את מרכז השקיפות.',s:'דורש מפתח'},{t:'Meta Ads',d:'ה-API הרשמי מכסה בישראל רק מודעות פוליטיות. בדיקה בממשק.',s:'ידני'},{t:'רשתות חברתיות',d:'תאריך פוסט אחרון דורש גישת API לעמוד או כלי צד ג׳. בינתיים: תיעוד קולי.',s:'ידני / קולי'}];
+    // clients
+    const ql=s.q.trim().toLowerCase();const gfk=Object.keys(s.gf).filter(k=>s.gf[k]);
+    let list=all.filter(r=>{if(ql&&!(r.name.toLowerCase().includes(ql)||r.o.brand.toLowerCase().includes(ql)||r.site.toLowerCase().includes(ql)))return false;if(gfk.some(k=>r.st[k]!=='gap'))return false;
+      if(s.sf==='needs')return r.done<NC&&!r.hold;if(s.sf==='complete')return r.done===NC;if(s.sf==='hold')return !!r.hold||['hold','dnc'].includes(r.rev);if(s.sf==='next')return nextIn(r.id);return true;});
+    const RR={approved:0,feedback:1,awaiting:2,'':3,hold:4,dnc:5};
+    const sorters={gaps:byGaps,done:(a,b)=>b.done-a.done||b.gaps-a.gaps||a.name.localeCompare(b.name,'he'),review:(a,b)=>RR[a.rev||'']-RR[b.rev||'']||byGaps(a,b),name:(a,b)=>a.name.localeCompare(b.name,'he')};
+    list=list.slice().sort(sorters[s.sort]||byGaps);
+    const rows=list.slice(0,limit).map(r=>{const inN=nextIn(r.id);const hl=r.hold==='dnc'?'לא לפנות':r.hold==='hold'?'השהיה אסטרטגית':'';const rv=REV.find(x=>x[0]===r.rev);
+      return{name:r.name,sub:hl||(r.o.brand?'חיפוש: '+r.o.brand:(rv?'אלון / ניצן: '+rv[1]:r.c.src[K.stage]||'')),subColor:hl?'#c62f36':'#6b6b6b',siteHref:href(r.site),siteShort:short(r.site),hasSite:!!r.site,noSite:!r.site,chips:CHECKS.map(([k])=>ST[r.st[k]]),gaps:r.gaps,gapColor:r.gaps?'#c62f36':'#141414',doneText:r.done<NC?`${r.done}/${NC} נבדקו · דורש מחקר`:`${NC}/${NC} נבדקו`,last:fmt(r.last),open:open(r.id),toggleNext:()=>this.toggleNext(r.id),inNext:inN,selMark:inN?'✓':'',selBg:inN?'#F0565C':'transparent',selBd:inN?'#F0565C':'#d9cfcd'};});
+    const gapFilters=CHECKS.map(([k,t])=>{const on=!!s.gf[k];return{t,on,toggle:()=>this.setState({gf:{...s.gf,[k]:!on},limit:null}),bg:on?'#fdeced':'#ffffff',bd:on?'#F0565C':'#e9e0de',color:on?'#c62f36':'#3a3a3a'};});
+    const statusFilters=[['all','הכל'],['needs','דורש מחקר'],['complete','נבדקו במלואם'],['next','ב-10 הבאים'],['hold','בהשהיה']].map(([v,t])=>({t,on:s.sf===v,go:()=>this.setState({sf:v,limit:null}),bg:s.sf===v?'#141414':'transparent',color:s.sf===v?'#ffffff':'#3a3a3a'}));
+    // next 10
+    const nextL=this.packet();
+    const nextRows=nextL.map((r,i)=>{const cs=r.c.contacts||[],m=cs[0];return{hasMain:!!m,mainName:m?m.name+(m.role?' ('+m.role+')':''):'',mainTel:m&&m.phone||'',mainTelHref:m&&m.phone?'tel:'+m.phone:'',moreContacts:cs.length>1?'+ עוד '+(cs.length-1):'',idx:i+1,name:r.name,why:(PICKM[r.id]||{}).why||'',dir:(PICKM[r.id]||{}).dir||'',hasWhy:!!PICKM[r.id],siteHref:href(r.site),siteShort:short(r.site),hasSite:!!r.site,noSite:!r.site,gapNames:this.gapNames(r),doneText:r.gaps?doneText(r):`אין פערים מאומתים · ${doneText(r)}`,rel:this.rel(r.c),open:open(r.id),remove:()=>this.setState({next:s.next.filter(x=>x!==r.id)}),
+      statuses:REV.map(([v,t])=>{const on=(r.rev||'awaiting')===v;return{t,on,go:()=>this.setR(r.id,o=>{o.rev.status=v;if(v!=='awaiting'&&!o.rev.date)o.rev.date=today();}),bg:on?REVBG[v]:'transparent',color:on?REVC[v]:'#6b6b6b',bd:on?'transparent':'#e9e0de'};}),
+      notes:r.o.rev.notes,onNotes:e=>this.setP(r.id,'rev.notes',e.target.value),approved:r.rev==='approved',outcome:r.o.call.outcome,onOutcome:e=>this.setR(r.id,o=>{o.call.outcome=e.target.value;if(!o.call.date)o.call.date=today();})};});
+    // actions
+    const acts=[];const now=today();
+    all.forEach(r=>r.o.actions.forEach(a=>{if(!a.done)acts.push({pri:(a.due&&a.due<=now?0:['deliver','callback'].includes(a.kind)?1:3),due:a.due||'9999',t:a.text,kind:KIND[a.kind]||'משימה',kc:['deliver','callback'].includes(a.kind)?'#c62f36':'#1f5fc4',sub:r.name+(a.due?' · עד '+fmt(a.due)+(a.due<now?' (עבר המועד)':''):''),canDone:true,done:()=>this.setR(r.id,o=>{const x=o.actions.find(y=>y.id===a.id);if(x)x.done=true;}),go:open(r.id),goLabel:'פרופיל'});}));
+    nextL.filter(r=>r.rev==='approved'&&!r.o.call.outcome).forEach(r=>acts.push({pri:1,due:'5',t:'שיחה ראשונה: '+r.name,kind:'שיחה ראשונה',kc:'#1f5fc4',sub:'אושר לפנייה · '+(this.gapNames(r).join(', ')||'ללא פער מאומת'),go:open(r.id),goLabel:'הכנה'}));
+    const awaiting=nextL.filter(r=>(r.rev||'awaiting')==='awaiting');
+    if(awaiting.length)acts.push({pri:2,due:'1',t:s.sentAt?`מעקב מול אלון / ניצן: ${awaiting.length} ממתינים`:`שליחת ${nextL.length} הלקוחות לאלון / ניצן`,kind:'אישור הנהלה',kc:'#1f5fc4',sub:s.sentAt?'נשלח ב-'+fmt(s.sentAt):'לפני כל שיחה',go:go('next10'),goLabel:'10 הבאים'});
+    nextL.filter(r=>r.done<NC).forEach(r=>acts.push({pri:2,due:'2',t:'השלמת מחקר: '+r.name,kind:'מחקר',kc:'#6b6b6b',sub:doneText(r),go:open(r.id),goLabel:'מחקר'}));
+    if(nextL.length<10)acts.push({pri:4,due:'0',t:nextL.length?`השלמת רשימת 10 הבאים (${nextL.length}/10)`:'בחירת 10 הלקוחות הבאים',kind:'בחירה',kc:'#6b6b6b',sub:sl.length?sl.length+' לקוחות עם פער מאומת':'קודם צריך לחקור לקוחות',go:go(sl.length?'next10':'clients'),goLabel:'פתיחה'});
+    acts.sort((a,b)=>a.pri-b.pri||a.due.localeCompare(b.due));
+    const topActions=acts.slice(0,5).map((a,i)=>({...a,n:i+1,canDone:!!a.canDone}));
+    // profile
+    let p=null,h={};const pr=s.pid&&all.find(r=>r.id===s.pid);
+    if(pr){const id=pr.id,o=pr.o,src=pr.c.src;const term=o.brand||pr.name;const dom=short(pr.site).split('/')[0];const L=links(term,o.org.kw,dom);const on=(path,stamp)=>e=>this.setP(id,path,e.target.value,stamp);
+      const skip=new Set(['איש קשר ראשי','תפקיד בחברה','טלפון נייד','אנשי קשר נוספים','Google Top 5 אורגני','קמפיינים Google','קמפיינים Meta','קמפיינים TikTok','Google Business Profile','רשתות חברתיות פעילות','קישור Google','קישור Meta Ads','קישור Google Ads','קישור TikTok','קישור Google Maps']);
+      const srcFields=Object.keys(src).filter(k=>!skip.has(k)).map(k=>({k,v:src[k]||'—'}));
+      const days=+s.set.days||90;
+      const socRows=SOC.map(([k,n])=>{const x=o.soc.p[k]||{};const a=ageDays(x.last);return{name:n,url:x.url||'',last:x.last||'',href:L[k],hint:a==null?'':a<=days?'פעיל':'לא פעיל',hc:a==null?'#6b6b6b':a<=days?'#1d5b31':'#c62f36',onUrl:e=>this.setR(id,oo=>{oo.soc.p[k]={...(oo.soc.p[k]||{}),url:e.target.value};}),onLast:e=>this.setR(id,oo=>{oo.soc.p[k]={...(oo.soc.p[k]||{}),last:e.target.value};})};});
+      const anyAct=socRows.some(r=>r.hint==='פעיל'),anyP=socRows.some(r=>r.url||r.last);
+      const socSuggest=!o.soc.res&&anyP?(anyAct?'לפי התאריכים שהוזנו: נראית פעילות בטווח הסף. יש לאשר במסקנה.':'לפי התאריכים שהוזנו: אין פעילות בטווח הסף. יש לאשר במסקנה.'):'';
+      const oc=o.call.outcome;
+      const au=o.site.auto,ast=s.auto[id]||'';const col=(v,a,b)=>v==null?'#6b6b6b':v<a?'#c62f36':v<b?'#8a4b00':'#1d5b31';
+      const autoRows=au?[{k:'ביצועים במובייל',v:au.perf==null?'—':au.perf+'/100',c:col(au.perf,50,90)},{k:'מותאם למובייל',v:au.viewport?'כן':'לא',c:au.viewport?'#1d5b31':'#c62f36'},{k:'HTTPS',v:au.https?'כן':'לא',c:au.https?'#1d5b31':'#c62f36'},{k:'SEO טכני',v:au.seo==null?'—':au.seo+'/100',c:col(au.seo,70,90)},{k:'טעינת התוכן הראשי',v:au.lcp||'—',c:'#141414'},{k:'טכנולוגיות שזוהו',v:(au.tech||[]).join(', ')||'—',c:'#141414'}]:[];
+      const sources=[pr.site?{t:'האתר',u:href(pr.site)}:null,{t:'גוגל: שם העסק',u:L.google},o.org.kw?{t:'גוגל: '+o.org.kw,u:L.kw}:null,{t:'Google Ads',u:L.gads},{t:'Meta Ads',u:L.meta},{t:'Google Maps',u:L.maps},...SOC.map(([k,n])=>{const x=o.soc.p[k];return x&&x.url?{t:n,u:href(x.url)}:null;})].filter(Boolean);
+      this._src=sources;const rec=s.rec;
+      p={web:o.site,siteHref:href(pr.site),hasAuto:!!au,autoRows,shot:s.shots[id]?'data:image/jpeg;base64,'+String(s.shots[id]).replace(/^data:[^,]*,/,''):'',autoNote:au?`נבדק אוטומטית ב-${fmt(au.date)} · Google PageSpeed · ${short(au.url)}. המסקנה נשארת שלכם.`:'',autoLabel:ast==='busy'?'בודק את האתר…':au?'בדיקת אתר מחדש':'בדיקת אתר אוטומטית',autoMsg:ast&&ast!=='busy'?ast:'',psManual:'https://pagespeed.web.dev/analysis?url='+encodeURIComponent(href(pr.site)),psKey:s.set.psKey||'',anKey:s.set.anKey||'',showAn:!!(s.needAn||(s.set.anKey||'').trim()||!(window.claude&&window.claude.complete)),psKeyOn:!!(s.set.psKey||'').trim(),sources,srcCount:sources.length,
+        vt:s.vt,vInterim:s.vInterim,rec,micLabel:rec?'מקליט… לחצו לעצירה':'לחצו על המיקרופון ותספרו מה מצאתם',micBg:rec?'#F0565C':'#ffffff',micBd:rec?'#F0565C':'#e9e0de',micFg:rec?'#ffffff':'#F0565C',micDot:rec?'16px':'18px',micRad:rec?'4px':'999px',extractLabel:s.vBusy?'מעבד…':'מילוי הבדיקות מהטקסט',hasProp:!!(s.prop&&s.prop.id===id),prop:s.prop&&s.prop.id===id?this.propRows(s.prop.j):[],propEmpty:!!(s.prop&&s.prop.id===id&&!this.propRows(s.prop.j).length),
+        id,name:pr.name,stage:src[K.stage]||'',gaps:pr.gaps,gapColor:pr.gaps?'#c62f36':'#141414',doneText:doneText(pr),needs:pr.done<NC,hold:o.hold,holdBd:o.hold?'#F0565C':'#e9e0de',inNext:nextIn(id),nextLabel:nextIn(id)?'ב-10 הבאים ✓':'+ ל-10 הבאים',
+        sourceName:(s.meta&&s.meta.source)||'CSV',srcFields,brand:o.brand,term,siteShort:short(pr.site),
+        sites:[...(pr.site?[{v:short(pr.site),href:href(pr.site),tag:'CRM',canRm:false}]:[]),...o.sites.map((u,i)=>({v:short(u),href:href(u),tag:'נוסף',canRm:true,rm:()=>this.setR(id,oo=>{oo.sites.splice(i,1);})}))],
+        contacts:[...((pr.c.contacts&&pr.c.contacts.length)?pr.c.contacts.map(c=>({name:c.name,meta:[c.role,c.main?'איש קשר ראשי':'מה-CRM'].filter(Boolean).join(' · '),tel:c.phone||'',telHref:c.phone?'tel:'+c.phone:'',canRm:false})):(src[K.contact]?[{name:src[K.contact],meta:'איש קשר ב-CRM',canRm:false}]:[])),...o.contacts.map((c,i)=>({name:c.name,meta:[c.role,c.phone,c.email].filter(Boolean).join(' · '),canRm:true,rm:()=>this.setR(id,oo=>{oo.contacts.splice(i,1);})}))],
+        lastInteraction:[src['שיחה/פעילות אחרונה']&&src['שיחה/פעילות אחרונה']!=='לא נמצא תיעוד'?src['שיחה/פעילות אחרונה']:'',src['סוג הפעילות'],src['כותרת הפעילות'],src['מי מ-WEB3D תיעד']?'תיעד: '+src['מי מ-WEB3D תיעד']:''].filter(Boolean).join(' · ')||src[K.last]||'לא מתועד',note:o.note,org:o.org,ads:o.ads,gbp:o.gbp,soc:o.soc,rev:o.rev,call:o.call,L,
+        pill:{site:ST[pr.st.site],org:ST[pr.st.org],ads:ST[pr.st.ads],gbp:ST[pr.st.gbp],soc:ST[pr.st.soc]},
+        adRows:[['Google','google','gEv',L.gads],['Meta','meta','mEv',L.meta],['TikTok','tiktok','tEv',L.tiktok]].map(([n,k,ek,u])=>({name:n,v:o.ads[k],ev:o.ads[ek],href:u,on:on('ads.'+k,true),onEv:on('ads.'+ek)})),
+        socRows,socSuggest,
+        statuses:REV.map(([v,t])=>{const isOn=o.rev.status===v;return{t,on:isOn,go:()=>this.setR(id,oo=>{oo.rev.status=isOn?'':v;if(!isOn&&v!=='awaiting'&&!oo.rev.date)oo.rev.date=today();}),bg:isOn?REVBG[v]:'transparent',color:isOn?REVC[v]:'#6b6b6b',bd:isOn?'transparent':'#e9e0de'};}),
+        callHint:!oc?'':COMMIT.includes(oc)?'יש התחייבות או חזרה שסוכמה: הוסיפו משימת המשך עם מועד.':oc==='noanswer'?'אין מענה: לא נוצרת משימה אוטומטית.':'אפשר לסגור בלי פעולת המשך.',callHintColor:COMMIT.includes(oc)?'#1f5fc4':'#6b6b6b',
+        actions:o.actions.map((a,i)=>({text:a.text,done:!!a.done,mark:a.done?'✓':'',bg:a.done?'#F0565C':'transparent',color:a.done?'#6b6b6b':'#141414',meta:[KIND[a.kind],a.due?fmt(a.due):''].filter(Boolean).join(' · '),toggle:()=>this.setR(id,oo=>{oo.actions[i].done=!oo.actions[i].done;}),rm:()=>this.setR(id,oo=>{oo.actions.splice(i,1);})}))};
+      const dset=k=>e=>this.setState({d:{...this.state.d,[k]:e.target.value}});
+      h={anKey:e=>{const v=e.target.value;this.setState(s=>({set:{...s.set,anKey:v}}));},psKey:e=>{const v=e.target.value;this.setState(s=>({set:{...s.set,psKey:v}}));},siteRes:on('site.res',true),siteYear:on('site.year'),siteNotes:on('site.notes'),siteDate:on('site.date'),siteEv:on('site.ev'),kw:on('org.kw'),kwRes:on('org.kwRes',true),kwPages:on('org.kwPages'),
+        runAuto:()=>this.runAuto(id,pr.site),openAll:()=>{let n=0;(this._src||[]).forEach(x=>{const w=window.open(x.u,'_blank');if(w){try{w.opener=null}catch(e){}n++;}});if(n<(this._src||[]).length)this.flash('הדפדפן חסם חלק מהלשוניות. אשרו חלונות קופצים לאתר הזה.');},
+        mic:()=>this.mic(),vt:e=>this.setState({vt:e.target.value}),extract:()=>this.extract(id,pr.name),applyProp:()=>this.applyProp(),dropProp:()=>this.setState({prop:null}),
+        hold:on('hold'),note:on('note'),brand:on('brand'),orgRes:on('org.res',true),orgTerm:on('org.term'),orgPos:on('org.pos'),orgSite:on('org.site'),orgRegion:on('org.region'),orgDate:on('org.date'),orgEv:on('org.ev'),adsDate:on('ads.date'),gbpRes:on('gbp.res',true),gbpUrl:on('gbp.url'),gbpDate:on('gbp.date'),gbpEv:on('gbp.ev'),socRes:on('soc.res',true),socDate:on('soc.date'),
+        days:e=>this.setState({set:{...s.set,days:e.target.value}}),revNotes:on('rev.notes'),revDate:on('rev.date'),callOutcome:e=>this.setR(id,oo=>{oo.call.outcome=e.target.value;if(e.target.value&&!oo.call.date)oo.call.date=today();if(COMMIT.includes(e.target.value))this.setState({d:{...this.state.d,aKind:e.target.value==='callback'?'callback':'deliver'}});}),callDate:on('call.date'),callNotes:on('call.notes'),
+        toggleNext:()=>this.toggleNext(id),dSite:dset('site'),dCName:dset('cName'),dCRole:dset('cRole'),dCPhone:dset('cPhone'),dCEmail:dset('cEmail'),dAText:dset('aText'),dAKind:dset('aKind'),dADue:dset('aDue'),
+        addSite:()=>{const v=s.d.site.trim();if(!v)return;this.setR(id,oo=>{oo.sites.push(v);});this.setState({d:{...s.d,site:''}});},
+        addContact:()=>{const d=s.d;if(!d.cName.trim())return this.flash('נדרש שם איש קשר');this.setR(id,oo=>{oo.contacts.push({name:d.cName.trim(),role:d.cRole,phone:d.cPhone,email:d.cEmail});});this.setState({d:{...d,cName:'',cRole:'',cPhone:'',cEmail:''}});},
+        addAction:()=>{const d=s.d;if(!d.aText.trim())return this.flash('נדרש תיאור משימה');this.setR(id,oo=>{oo.actions.push({id:Date.now().toString(36),text:d.aText.trim(),kind:d.aKind,due:d.aDue,done:false});});this.setState({d:{...d,aText:'',aDue:''}});}};
+    }
+    const sentText=s.sentAt&&nextL.length?`הרשימה הוכנה לשליחה ב-${fmt(s.sentAt)}. ${nextL.filter(r=>(r.rev||'awaiting')!=='awaiting').length} מתוך ${nextL.length} עם תשובה.`:'';
+    return {
+      nav,menu:s.menu,toggleMenu:()=>this.setState({menu:!s.menu}),sourceName:(s.meta&&s.meta.source)||'—',totalClients:all.length,
+      loading,loadMsg:s.loadErr||'טוען את רשימת הלקוחות…',
+      vOverview:!loading&&view==='overview',vClients:!loading&&view==='clients',vNext:!loading&&view==='next10',vActions:!loading&&view==='actions',
+      goClients:go('clients'),stats,hasShort:shortlist.length>0,noShort:shortlist.length===0,shortlist,queue,flow,integrations,
+      q:s.q,onQ:e=>this.setState({q:e.target.value,limit:null}),sort:s.sort,onSort:e=>this.setState({sort:e.target.value}),gapFilters,statusFilters,rows,noRows:list.length===0,hasMore:list.length>limit,showMore:()=>this.setState({limit:limit+(P.pageSize||60)}),
+      shownText:`מציג ${Math.min(limit,list.length)} מתוך ${list.length}${list.length!==all.length?' (מסונן מתוך '+all.length+')':''}`,
+      nextCount:nextL.length,nextEmpty:nextL.length===0,nextRows,sentText,
+      autoFill:()=>{const add=sl.filter(r=>!s.next.includes(r.id)).slice(0,10-s.next.length);if(!add.length)return this.flash(sl.length?'אין מועמדים נוספים':'אין עדיין לקוחות עם פער מאומת');this.setState(st=>{const R={...st.R};add.forEach(r=>{const o=mk(R,r.id);if(!o.rev.status)R[r.id]={...o,rev:{...o.rev,status:'awaiting'}};});return{next:[...st.next,...add.map(r=>r.id)],R};});this.flash(`נוספו ${add.length} לקוחות`);},
+      copyList:()=>this.copyList(),exportCsv:()=>this.exportCsv(),
+      topActions,noActions:topActions.length===0,moreActionsText:acts.length>5?`ועוד ${acts.length-5} פעולות פתוחות בפרופילים.`:'',
+      hasProfile:!!p,p:p||{web:{},sources:[],autoRows:[],prop:[],pill:{site:{},org:{},ads:{},gbp:{},soc:{}},org:{},ads:{},gbp:{},soc:{},rev:{},call:{},L:{}},h,d:s.d,days:s.set.days,closeProfile:()=>{this.stopMic();this.setState({pid:null,rec:false})},
+      toast:s.toast,
+      csvRef:this.csvRef,bakRef:this.bakRef,pickCsv:()=>{this.setState({menu:false});this.csvRef.current&&this.csvRef.current.click();},pickBackup:()=>{this.setState({menu:false});this.bakRef.current&&this.bakRef.current.click();},
+      onCsv:e=>this.importCsv(e),onBackup:e=>this.importBackup(e),
+      exportBackup:()=>{download(`web3d-research-${today()}.json`,JSON.stringify({R:s.R,next:s.next,set:s.set,sentAt:s.sentAt},null,1),'application/json');this.setState({menu:false});},
+      resetSource:()=>{if(!confirm('לחזור לקובץ המקור המקורי? המחקר נשמר לפי מזהי לקוח.'))return;localStorage.removeItem(LS_SRC);this.setState({src:null,menu:false});this.loadFile();}
+    };
+  }
+  packetText(){const L=this.packet();const lines=[`WEB3D | ${L.length} לקוחות לבדיקה מול אלון / ניצן · ${fmt(today())}`,'לפני כל שיחה: מה מצב הקשר? רגישויות? למי לפנות?',''];
+    L.forEach((r,i)=>{const g=this.gapNames(r);lines.push(`${i+1}. ${r.name}${r.site?' · '+short(r.site):''}`,`   פערים מאומתים: ${g.length?g.join(', '):'אין'} (${r.done}/${NC} בדיקות הושלמו)`,`   קשר קיים: ${this.rel(r.c)}`,`   הערות אלון / ניצן: `,'');});return lines.join('\n');}
+  copyList(){const L=this.packet();if(!L.length)return this.flash('לא נבחרו לקוחות');const t=this.packetText();const done=()=>{this.setState({sentAt:today()});this.flash('הרשימה הועתקה');};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,()=>this.fallbackCopy(t,done));else this.fallbackCopy(t,done);}
+  fallbackCopy(t,done){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){this.flash('ההעתקה נכשלה');}ta.remove();}
+  exportCsv(){const L=this.packet();if(!L.length)return this.flash('לא נבחרו לקוחות');const head=['מזהה','לקוח','אתר','פערים מאומתים','בדיקות שהושלמו','קשר קיים עם WEB3D','סטטוס אלון / ניצן','הערות אלון / ניצן'];
+    const rows=L.map(r=>[r.id,r.name,r.site||'אין אתר מתועד',this.gapNames(r).join(', '),r.done+'/'+NC,this.rel(r.c),(REV.find(x=>x[0]===(r.rev||'awaiting'))||[])[1],r.o.rev.notes]);
+    download(`web3d-next10-${today()}.csv`,'\uFEFF'+[head,...rows].map(x=>x.map(csvCell).join(',')).join('\r\n'),'text/csv;charset=utf-8');this.setState({sentAt:this.state.sentAt||today()});}
+  importCsv(e){const f=e.target.files&&e.target.files[0];e.target.value='';if(!f)return;const rd=new FileReader();rd.onload=()=>{const rows=parseCSV(String(rd.result));if(rows.length<2)return this.flash('הקובץ ריק');const header=rows[0].map(x=>x.trim());const ni=header.indexOf(K.name)>=0?header.indexOf(K.name):0;
+      if(!confirm(`לייבא ${rows.length-1} רשומות ולהחליף את רשימת המקור? מחקר קיים נשמר ומשויך לפי שם הלקוח.`))return;
+      const byName={};(this.state.src||[]).forEach(c=>{byName[(c.src[K.name]||'').trim()]=c.id;});const stamp=Date.now().toString(36);
+      const clients=rows.slice(1).map((r,i)=>{const src={};header.forEach((hh,j)=>src[hh||('עמודה '+(j+1))]=r[j]??'');if(header[ni]!==K.name)src[K.name]=r[ni]||'';const nm=(r[ni]||'').trim();return{id:byName[nm]||`imp-${stamp}-${i+1}`,src};});
+      const meta={source:f.name,importedAt:today(),header,clients};try{localStorage.setItem(LS_SRC,JSON.stringify(meta));}catch(err){this.flash('הקובץ גדול מדי לאחסון בדפדפן');}
+      this.setState({src:clients,meta,limit:null});this.flash(`יובאו ${clients.length} רשומות`);};rd.readAsText(f,'utf-8');}
+  importBackup(e){const f=e.target.files&&e.target.files[0];e.target.value='';if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const d=JSON.parse(String(rd.result));if(!d.R)throw 0;if(!confirm('לשחזר את הגיבוי? המחקר הנוכחי יוחלף.'))return;this.setState({R:d.R,next:d.next||[],set:d.set||{days:90},sentAt:d.sentAt||''});this.flash('הגיבוי שוחזר');}catch(err){this.flash('קובץ גיבוי לא תקין');}};rd.readAsText(f);}
+}
+</script>
+</body>
+</html>

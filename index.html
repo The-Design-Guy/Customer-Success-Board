@@ -322,7 +322,32 @@ button{cursor:pointer}
 </div>
 
 <div style="padding:24px 28px 32px;display:flex;flex-direction:column;gap:20px">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;align-items:start">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:220px"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">סקירת AI</h3><div style="font-size:13px;color:#6b6b6b;text-wrap:pretty">{{ p.ai.headline }}</div></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-if value="{{ p.ai.cloud }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.runAI }}" style="border:0;background:#F0565C;color:#ffffff;font-weight:600;border-radius:12px;padding:10px 18px;font-size:14px">{{ p.ai.label }}</button></sc-if>
+<sc-if value="{{ p.ai.canApply }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.applyAI }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:10px 16px;font-size:14px;border-radius:12px;color:#141414">העברת הממצאים לבדיקות</button></sc-if>
+</div>
+</div>
+<sc-if value="{{ p.ai.local }}" hint-placeholder-val="{{ true }}"><div style="font-size:13px;color:#6b6b6b;background:#fbf9f8;border:1px dashed #d9cfcd;border-radius:12px;padding:10px 14px;text-wrap:pretty">הסקירה רצה בגרסת Vercel. כאן רואים תוצאות שכבר נשמרו, ואפשר להכין מונחים מראש.</div></sc-if>
+<sc-if value="{{ p.ai.keysMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#a3262c">{{ p.ai.keysMsg }}</div></sc-if>
+<sc-if value="{{ p.ai.hasProgress }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ p.ai.chips }}" as="c" hint-placeholder-count="9"><span style="font-size:12px;padding:3px 10px;border-radius:999px;background:{{ c.bg }};color:{{ c.c }}">{{ c.t }}</span></sc-for></div></sc-if>
+<div style="display:flex;flex-direction:column;gap:6px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:#141414;font-weight:600">מילות מפתח משלך<textarea value="{{ p.ai.myTerms }}" onChange="{{ h.myTerms }}" rows="2" placeholder="מונח בכל שורה, או מופרדים בפסיק. למשל: מיזוג אוויר לבניינים, מזגן VRF לפרויקטים" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:400;resize:vertical;font-family:inherit"></textarea></label>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="font-size:12px;color:#6b6b6b">{{ p.ai.myCount }} מונחים · נבדקים יחד עם 5 המונחים של ה-AI, ומסומנים ב-★</span>
+<sc-if value="{{ p.ai.cloud }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.runMyTerms }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:6px 12px;font-size:13px;color:#141414">בדיקת המונחים שלי בלבד</button></sc-if></div>
+</div>
+<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;color:#6b6b6b;border-top:1px solid #f3eeed;padding-top:10px">
+<span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span>{{ p.ai.sync }}</span><sc-if value="{{ p.ai.driveOn }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.syncAll }}" style="border:0;background:transparent;padding:0;font-size:12px;color:#141414;text-decoration:underline">שמירת כל הלקוחות ל-Drive עכשיו</button></sc-if></span>
+<sc-if value="{{ p.ai.cloud }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.toggleAutoAI }}" aria-pressed="{{ p.ai.autoOn }}" style="border:0;background:transparent;padding:0;font-size:12px;color:#6b6b6b;text-decoration:underline">{{ p.ai.autoLabel }}</button></sc-if>
+</div>
+</div>
+<div role="tablist" aria-label="תיק לקוח" style="display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid #efe7e5;margin-bottom:-6px">
+<sc-for list="{{ p.tabs }}" as="t" hint-placeholder-count="7"><button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.go }}" style="flex:none;border:0;background:transparent;padding:10px 14px;font-size:14px;font-weight:{{ t.fw }};color:{{ t.c }};border-bottom:2px solid {{ t.bd }};white-space:nowrap">{{ t.t }}<span style="font-size:11px;color:#6b6b6b;margin-inline-start:6px">{{ t.n }}</span></button></sc-for>
+</div>
+<sc-if value="{{ p.tab.crm }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;align-items:start">
 <div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px">
 <h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">מידע מקורי מה-CRM</h3>
 <div style="font-size:12px;color:#6b6b6b">לקריאה בלבד · {{ p.sourceName }}</div>
@@ -331,14 +356,6 @@ button{cursor:pointer}
 <dt style="color:#6b6b6b">{{ f.k }}</dt><dd style="margin:0;overflow-wrap:anywhere">{{ f.v }}</dd>
 </sc-for>
 </dl>
-</div>
-<div style="display:flex;flex-direction:column;gap:20px">
-<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
-<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">אתרים</h3>
-<sc-for list="{{ p.sites }}" as="s" hint-placeholder-count="1">
-<div style="display:flex;gap:10px;align-items:center;font-size:14px"><a href="{{ s.href }}" target="_blank" rel="noopener" dir="ltr" style="flex:1;overflow-wrap:anywhere">{{ s.v }}</a><span style="font-size:12px;color:#6b6b6b">{{ s.tag }}</span><sc-if value="{{ s.canRm }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ s.rm }}" aria-label="הסרת אתר" style="border:0;background:transparent;color:#6b6b6b;font-size:13px">הסרה</button></sc-if></div>
-</sc-for>
-<div style="display:flex;gap:8px"><input value="{{ d.site }}" onChange="{{ h.dSite }}" placeholder="אתר נוסף (למשל דומיין שאומת)" dir="ltr" style="flex:1;background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 12px;font-size:14px;min-width:0"><button type="button" onClick="{{ h.addSite }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px">הוספה</button></div>
 </div>
 <div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
 <h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">אנשי קשר</h3>
@@ -353,52 +370,20 @@ button{cursor:pointer}
 </div>
 <button type="button" onClick="{{ h.addContact }}" style="align-self:flex-start;border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px">הוספת איש קשר</button>
 </div>
-<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px">
-<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">הערה קצרה</h3>
-<div style="font-size:13px;color:#6b6b6b">אינטראקציה אחרונה מתועדת: {{ p.lastInteraction }}</div>
-<textarea value="{{ p.note }}" onChange="{{ h.note }}" rows="3" placeholder="מה חשוב לזכור לפני פנייה" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
 </div>
-</div>
-</div>
-
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px">
-<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:22px">חמש הבדיקות</h3>
-<div style="font-size:13px;color:#6b6b6b">מונח חיפוש: <input value="{{ p.brand }}" onChange="{{ h.brand }}" placeholder="{{ p.name }}" aria-label="שם ציבורי לחיפוש" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:6px 10px;font-size:13px;width:220px"></div>
-</div>
-<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px">
-<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
-<div style="display:flex;flex-direction:column;gap:2px"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">מחקר AI</h3><div style="font-size:13px;color:#6b6b6b;text-wrap:pretty">פוסטים אחרונים ברשתות, Google Business וביקורות, מודעות פעילות, מיקום שם העסק ו-5 מונחים ענפיים.</div></div>
-<sc-if value="{{ p.ai.cloud }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;flex-wrap:wrap">
-<button type="button" onClick="{{ h.runAI }}" style="border:0;background:#F0565C;color:#ffffff;font-weight:600;border-radius:12px;padding:9px 16px;font-size:14px">{{ p.ai.label }}</button>
-<sc-if value="{{ p.ai.canApply }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.applyAI }}" style="border:1px solid #e9e0de;background:transparent;border-radius:12px;padding:9px 16px;font-size:14px;color:#141414">העברת הממצאים לבדיקות</button></sc-if>
-</div></sc-if>
-</div>
-<sc-if value="{{ p.ai.local }}" hint-placeholder-val="{{ true }}"><div style="font-size:13px;color:#6b6b6b;background:#fbf9f8;border:1px dashed #d9cfcd;border-radius:12px;padding:12px 14px;text-wrap:pretty">המחקר האוטומטי רץ בגרסת Vercel, עם המפתחות שמוגדרים שם. כאן אפשר לראות תוצאות שכבר נשמרו.</div></sc-if>
-<sc-if value="{{ p.ai.keysMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#a3262c">{{ p.ai.keysMsg }}</div></sc-if>
-<div style="display:flex;flex-direction:column;gap:6px">
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:#141414;font-weight:600">מונחים לבדיקה משלך<textarea value="{{ p.ai.myTerms }}" onChange="{{ h.myTerms }}" rows="3" placeholder="מונח בכל שורה, או מופרדים בפסיק. למשל: מיזוג אוויר לבניינים, מזגן VRF לפרויקטים" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:400;resize:vertical;font-family:inherit"></textarea></label>
-<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="font-size:12px;color:#6b6b6b">{{ p.ai.myCount }} מונחים · נבדקים יחד עם 5 המונחים של ה-AI בכל הרצה, ומסומנים ב-★</span>
-<sc-if value="{{ p.ai.cloud }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.runMyTerms }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:6px 12px;font-size:13px;color:#141414">בדיקת המונחים שלי בלבד</button></sc-if></div>
-</div>
-<div style="display:flex;flex-direction:column">
-<sc-for list="{{ p.ai.secs }}" as="x" hint-placeholder-count="9">
-<div style="display:flex;flex-direction:column;gap:6px;padding:10px 0;border-top:1px solid #f3eeed">
-<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap"><span style="font-size:14px;font-weight:600;color:#141414">{{ x.title }}</span><span style="font-size:12px;font-weight:600;color:{{ x.stc }}">{{ x.st }}</span></div>
-<sc-if value="{{ x.hasSum }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#3a3a3a;text-wrap:pretty">{{ x.sum }}</div></sc-if>
-<sc-if value="{{ x.hasItems }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:4px;padding-inline-start:10px;border-inline-start:2px solid #f3eeed">
-<sc-for list="{{ x.items }}" as="it" hint-placeholder-count="3"><a href="{{ it.href }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:minmax(90px,auto) minmax(0,1fr);gap:10px;font-size:12px;color:#3a3a3a;text-decoration:none"><span style="color:#6b6b6b">{{ it.a }}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ it.b }}</span></a></sc-for>
-</div></sc-if>
-</div>
+</sc-if>
+<sc-if value="{{ p.tab.sites }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:20px"><div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">אתרים</h3>
+<sc-for list="{{ p.sites }}" as="s" hint-placeholder-count="1">
+<div style="display:flex;gap:10px;align-items:center;font-size:14px"><a href="{{ s.href }}" target="_blank" rel="noopener" dir="ltr" style="flex:1;overflow-wrap:anywhere">{{ s.v }}</a><span style="font-size:12px;color:#6b6b6b">{{ s.tag }}</span><sc-if value="{{ s.canRm }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ s.rm }}" aria-label="הסרת אתר" style="border:0;background:transparent;color:#6b6b6b;font-size:13px">הסרה</button></sc-if></div>
 </sc-for>
-</div>
-<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;color:#6b6b6b;border-top:1px solid #f3eeed;padding-top:10px">
-<span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span>{{ p.ai.sync }}</span><sc-if value="{{ p.ai.driveOn }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.syncAll }}" style="border:0;background:transparent;padding:0;font-size:12px;color:#141414;text-decoration:underline">שמירת כל הלקוחות ל-Drive עכשיו</button></sc-if></span>
-<sc-if value="{{ p.ai.cloud }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.toggleAutoAI }}" aria-pressed="{{ p.ai.autoOn }}" style="border:0;background:transparent;padding:0;font-size:12px;color:#6b6b6b;text-decoration:underline">{{ p.ai.autoLabel }}</button></sc-if>
-</div>
+<div style="display:flex;gap:8px"><input value="{{ d.site }}" onChange="{{ h.dSite }}" placeholder="אתר נוסף (למשל דומיין שאומת)" dir="ltr" style="flex:1;background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 12px;font-size:14px;min-width:0"><button type="button" onClick="{{ h.addSite }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px">הוספה</button></div>
 </div>
 <div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:16px">
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
-<div style="display:flex;flex-direction:column;gap:2px"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">מחקר מהיר</h3><div style="font-size:13px;color:#6b6b6b;text-wrap:pretty">בדיקת אתר אוטומטית, כל מקורות המחקר בלחיצה אחת, ותיעוד בקול שממלא את הבדיקות.</div></div>
+<div style="display:flex;flex-direction:column;gap:2px"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">מקורות ובדיקת אתר</h3><div style="font-size:13px;color:#6b6b6b;text-wrap:pretty">בדיקת אתר אוטומטית וכל מקורות המחקר בלחיצה אחת.</div></div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <button type="button" onClick="{{ h.runAuto }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:12px;padding:9px 16px;font-size:14px">{{ p.autoLabel }}</button>
 <button type="button" onClick="{{ h.openAll }}" style="border:1px solid #e9e0de;background:transparent;border-radius:12px;padding:9px 16px;font-size:14px;color:#141414">פתיחת כל המקורות ({{ p.srcCount }})</button>
@@ -415,32 +400,7 @@ button{cursor:pointer}
 <a href="{{ p.psManual }}" target="_blank" rel="noopener" style="font-size:13px;padding:8px 0">בדיקה ידנית ב-PageSpeed ↗</a>
 </div>
 </div></sc-if>
-<div style="display:flex;gap:14px;align-items:flex-start;border-top:1px solid #f3eeed;padding-top:16px">
-<button type="button" onClick="{{ h.mic }}" aria-pressed="{{ p.rec }}" aria-label="{{ p.micLabel }}" style="flex:none;width:52px;height:52px;border-radius:999px;border:1.5px solid {{ p.micBd }};background:{{ p.micBg }};display:flex;align-items:center;justify-content:center;padding:0"><span style="width:{{ p.micDot }};height:{{ p.micDot }};border-radius:{{ p.micRad }};background:{{ p.micFg }}"></span></button>
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px">
-<div style="font-size:13px;color:#141414;font-weight:500">{{ p.micLabel }}</div>
-<textarea value="{{ p.vt }}" onChange="{{ h.vt }}" rows="4" placeholder="ספרו מה מצאתם: איך נראה האתר, אם יש מודעות בספריות, מתי הפוסט האחרון בכל רשת, מה מופיע בגוגל…" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
-<sc-if value="{{ p.vInterim }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">{{ p.vInterim }}</div></sc-if>
-<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-<button type="button" onClick="{{ h.extract }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:#141414">{{ p.extractLabel }}</button>
-<span style="font-size:12px;color:#6b6b6b">שום דבר לא נשמר בלי אישור שלכם.</span>
-</div>
-<sc-if value="{{ p.showAn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap"><label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b;flex:1;min-width:220px">מפתח Claude API (נשמר בדפדפן הזה בלבד)<input type="password" value="{{ p.anKey }}" onChange="{{ h.anKey }}" dir="ltr" placeholder="sk-ant-…" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px"></label><a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener" style="font-size:13px;padding:8px 0">קבלת מפתח ↗</a></div></sc-if>
-</div>
-</div>
-<sc-if value="{{ p.hasProp }}" hint-placeholder-val="{{ false }}">
-<div style="background:#fbf9f8;border:1px dashed #d9cfcd;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
-<div style="font-size:14px;font-weight:600;color:#141414">מה הבנתי מהתיעוד</div>
-<dl style="margin:0;display:grid;grid-template-columns:minmax(110px,auto) minmax(0,1fr);gap:6px 14px;font-size:13px">
-<sc-for list="{{ p.prop }}" as="x" hint-placeholder-count="4"><dt style="color:#6b6b6b">{{ x.k }}</dt><dd style="margin:0;color:#141414">{{ x.v }}</dd></sc-for>
-</dl>
-<sc-if value="{{ p.propEmpty }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">לא זיהיתי ממצאים מפורשים. נסו לפרט יותר.</div></sc-if>
-<div style="display:flex;gap:8px"><button type="button" onClick="{{ h.applyProp }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:10px;padding:8px 16px;font-size:13px">אישור ושמירה בבדיקות</button><button type="button" onClick="{{ h.dropProp }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:8px 14px;font-size:13px">ביטול</button></div>
-</div>
-</sc-if>
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px;align-items:start">
-
+</div></div>
 <div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">א · האתר</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.site.c }};background:{{ p.pill.site.bg }};border:1px {{ p.pill.site.bs }} {{ p.pill.site.bd }}">{{ p.pill.site.t }}</span></div>
 <p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">כמה האתר עדכני, רספונסיבי ומציג את העבודה. המדידה האוטומטית בודקת מובייל וביצועים; ההתרשמות העיצובית היא שלכם. <a href="{{ p.siteHref }}" target="_blank" rel="noopener">פתיחת האתר ↗</a></p>
@@ -461,9 +421,64 @@ button{cursor:pointer}
 <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">ראיה<input value="{{ p.web.ev }}" onChange="{{ h.siteEv }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
 </div>
 </div>
-
+</div>
+</sc-if>
+<sc-if value="{{ p.tab.social }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;align-items:start">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">ממצאי AI: רשתות</h3></div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ p.ai.secsSoc }}" as="x" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:6px;padding:10px 0;border-top:1px solid #f3eeed">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap"><span style="font-size:14px;font-weight:600;color:#141414">{{ x.title }}</span><span style="font-size:12px;font-weight:600;color:{{ x.stc }}">{{ x.st }}</span></div>
+<sc-if value="{{ x.hasSum }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#3a3a3a;text-wrap:pretty">{{ x.sum }}</div></sc-if>
+<sc-if value="{{ x.hasItems }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:4px;padding-inline-start:10px;border-inline-start:2px solid #f3eeed">
+<sc-for list="{{ x.items }}" as="it" hint-placeholder-count="3"><a href="{{ it.href }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:minmax(90px,auto) minmax(0,1fr);gap:10px;font-size:12px;color:#3a3a3a;text-decoration:none"><span style="color:#6b6b6b">{{ it.a }}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ it.b }}</span></a></sc-for>
+</div></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ה · רשתות חברתיות פעילות</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.soc.c }};background:{{ p.pill.soc.bg }};border:1px {{ p.pill.soc.bs }} {{ p.pill.soc.bd }}">{{ p.pill.soc.t }}</span></div>
+<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">רק חשבונות רשמיים שאומתו. פעיל = פרסום ב-<input type="number" min="1" value="{{ days }}" onChange="{{ h.days }}" aria-label="סף ימים" style="width:56px;background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:8px;padding:2px 6px;font-size:13px"> הימים האחרונים.</p>
+<sc-for list="{{ p.socRows }}" as="s" hint-placeholder-count="5">
+<div style="display:grid;grid-template-columns:78px minmax(0,1.4fr) 132px 64px auto;gap:8px;align-items:center">
+<span style="font-size:13px;font-weight:500" dir="ltr">{{ s.name }}</span>
+<input value="{{ s.url }}" onChange="{{ s.onUrl }}" placeholder="קישור לפרופיל" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:13px;color:#141414;min-width:0;text-align:right">
+<input type="date" value="{{ s.last }}" onChange="{{ s.onLast }}" aria-label="פרסום אחרון" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 8px;font-size:13px;color:#141414;min-width:0">
+<span style="font-size:12px;color:{{ s.hc }}">{{ s.hint }}</span>
+<a href="{{ s.href }}" target="_blank" rel="noopener" style="font-size:13px;white-space:nowrap">חיפוש ↗</a>
+</div>
+</sc-for>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">מסקנה<select value="{{ p.soc.res }}" onChange="{{ h.socRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="inactive">אין נוכחות פעילה רלוונטית</option><option value="active">נמצאה נוכחות פעילה</option><option value="na">לא רלוונטי</option></select></label>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.soc.date }}" onChange="{{ h.socDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
+</div>
+<sc-if value="{{ p.soc.ev }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#3a3a3a;white-space:pre-line">{{ p.soc.ev }}</div></sc-if>
+<sc-if value="{{ p.socSuggest }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#6b6b6b">{{ p.socSuggest }}</div></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ p.tab.mkt }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:20px"><div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">ממצאי AI: גוגל ומודעות</h3><sc-if value="{{ p.ai.canApply }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ h.applyAI }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:6px 12px;font-size:13px;color:#141414">העברת הממצאים לבדיקות</button></sc-if></div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ p.ai.secsMkt }}" as="x" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:6px;padding:10px 0;border-top:1px solid #f3eeed">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap"><span style="font-size:14px;font-weight:600;color:#141414">{{ x.title }}</span><span style="font-size:12px;font-weight:600;color:{{ x.stc }}">{{ x.st }}</span></div>
+<sc-if value="{{ x.hasSum }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#3a3a3a;text-wrap:pretty">{{ x.sum }}</div></sc-if>
+<sc-if value="{{ x.hasItems }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:4px;padding-inline-start:10px;border-inline-start:2px solid #f3eeed">
+<sc-for list="{{ x.items }}" as="it" hint-placeholder-count="3"><a href="{{ it.href }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:minmax(90px,auto) minmax(0,1fr);gap:10px;font-size:12px;color:#3a3a3a;text-decoration:none"><span style="color:#6b6b6b">{{ it.a }}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ it.b }}</span></a></sc-for>
+</div></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;align-items:start">
 <div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ב · נראות בגוגל</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.org.c }};background:{{ p.pill.org.bg }};border:1px {{ p.pill.org.bs }} {{ p.pill.org.bd }}">{{ p.pill.org.t }}</span></div>
+<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">שם העסק לחיפוש (כפי שמופיע באתר)<input value="{{ p.brand }}" onChange="{{ h.brand }}" placeholder="{{ p.name }}" aria-label="שם ציבורי לחיפוש" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:6px 10px;font-size:13px;width:100%;box-sizing:border-box"></label>
 <p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">שם העסק: האם האתר הרשמי בחמש התוצאות האורגניות הראשונות. מונח ענפי: האם העסק מופיע בכלל. <a href="{{ p.L.google }}" target="_blank" rel="noopener">פתיחת מקור מחקר ↗</a></p>
 <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">חיפוש שם העסק
 <select value="{{ p.org.res }}" onChange="{{ h.orgRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="not5">האתר הרשמי לא בחמש הראשונות</option><option value="top5">האתר הרשמי בחמש הראשונות</option><option value="na">לא רלוונטי</option></select></label>
@@ -494,8 +509,7 @@ button{cursor:pointer}
 </div>
 <div style="font-size:12px;color:#6b6b6b">דירוג ממותג חלש הוא סימן להזדמנות, לא הוכחה להיקף ההשקעה השיווקית.</div>
 </div>
-
-<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:column;gap:20px"><div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ג · קמפיינים פעילים</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.ads.c }};background:{{ p.pill.ads.bg }};border:1px {{ p.pill.ads.bs }} {{ p.pill.ads.bd }}">{{ p.pill.ads.t }}</span></div>
 <p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">בדיקה נפרדת לכל פלטפורמה. אם אין כיסוי, מסמנים "לא ניתן לאמת" ולא "אין מודעות". לא מסיקים תקציב.</p>
 <sc-for list="{{ p.adRows }}" as="a" hint-placeholder-count="3">
@@ -509,7 +523,6 @@ button{cursor:pointer}
 <label style="display:flex;gap:10px;align-items:center;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.ads.date }}" onChange="{{ h.adsDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:14px;color:#141414"></label>
 <div style="font-size:12px;color:#6b6b6b">TikTok: שקיפות מודעות זמינה בעיקר לאירופה; בישראל לרוב "לא ניתן לאמת". לא חובה לסיכום הבדיקה.</div>
 </div>
-
 <div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ד · Google Business Profile</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.gbp.c }};background:{{ p.pill.gbp.bg }};border:1px {{ p.pill.gbp.bs }} {{ p.pill.gbp.bd }}">{{ p.pill.gbp.t }}</span></div>
 <p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">פרופיל עסק בגוגל מפות, כשהוא רלוונטי לסוג העסק. <a href="{{ p.L.maps }}" target="_blank" rel="noopener">פתיחה במפות ↗</a></p>
@@ -519,32 +532,48 @@ button{cursor:pointer}
 <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">קישור לפרופיל<input value="{{ p.gbp.url }}" onChange="{{ h.gbpUrl }}" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0;text-align:right"></label>
 <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">ראיה<input value="{{ p.gbp.ev }}" onChange="{{ h.gbpEv }}" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0;text-align:right"></label>
 </div>
-</div>
-
-<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
-<div style="display:flex;gap:10px;align-items:center;justify-content:space-between"><h4 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:17px">ה · רשתות חברתיות פעילות</h4><span style="display:inline-flex;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;color:{{ p.pill.soc.c }};background:{{ p.pill.soc.bg }};border:1px {{ p.pill.soc.bs }} {{ p.pill.soc.bd }}">{{ p.pill.soc.t }}</span></div>
-<p style="margin:0;font-size:13px;color:#6b6b6b;text-wrap:pretty">רק חשבונות רשמיים שאומתו. פעיל = פרסום ב-<input type="number" min="1" value="{{ days }}" onChange="{{ h.days }}" aria-label="סף ימים" style="width:56px;background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:8px;padding:2px 6px;font-size:13px"> הימים האחרונים.</p>
-<sc-for list="{{ p.socRows }}" as="s" hint-placeholder-count="5">
-<div style="display:grid;grid-template-columns:78px minmax(0,1.4fr) 132px 64px auto;gap:8px;align-items:center">
-<span style="font-size:13px;font-weight:500" dir="ltr">{{ s.name }}</span>
-<input value="{{ s.url }}" onChange="{{ s.onUrl }}" placeholder="קישור לפרופיל" dir="ltr" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:13px;color:#141414;min-width:0;text-align:right">
-<input type="date" value="{{ s.last }}" onChange="{{ s.onLast }}" aria-label="פרסום אחרון" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 8px;font-size:13px;color:#141414;min-width:0">
-<span style="font-size:12px;color:{{ s.hc }}">{{ s.hint }}</span>
-<a href="{{ s.href }}" target="_blank" rel="noopener" style="font-size:13px;white-space:nowrap">חיפוש ↗</a>
-</div>
-</sc-for>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">מסקנה<select value="{{ p.soc.res }}" onChange="{{ h.socRes }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם נבדק</option><option value="inactive">אין נוכחות פעילה רלוונטית</option><option value="active">נמצאה נוכחות פעילה</option><option value="na">לא רלוונטי</option></select></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך בדיקה<input type="date" value="{{ p.soc.date }}" onChange="{{ h.socDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
-</div>
-<sc-if value="{{ p.soc.ev }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#3a3a3a;white-space:pre-line">{{ p.soc.ev }}</div></sc-if>
-<sc-if value="{{ p.socSuggest }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#6b6b6b">{{ p.socSuggest }}</div></sc-if>
+</div></div>
 </div>
 </div>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px;align-items:start;margin-top:8px">
-<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
-<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">אלון / ניצן</h3>
+</sc-if>
+<sc-if value="{{ p.tab.roy }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;align-items:start">
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">הערות של רועי</h3>
+<div style="font-size:13px;color:#6b6b6b">אינטראקציה אחרונה מתועדת: {{ p.lastInteraction }}</div>
+<textarea value="{{ p.note }}" onChange="{{ h.note }}" rows="3" placeholder="מה חשוב לזכור לפני פנייה" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
+</div>
+<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px"><h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">תיעוד קולי</h3><div style="font-size:13px;color:#6b6b6b">ספרו מה מצאתם, וה-AI ימלא את הבדיקות אחרי אישור.</div></div>
+<div style="display:flex;gap:14px;align-items:flex-start">
+<button type="button" onClick="{{ h.mic }}" aria-pressed="{{ p.rec }}" aria-label="{{ p.micLabel }}" style="flex:none;width:52px;height:52px;border-radius:999px;border:1.5px solid {{ p.micBd }};background:{{ p.micBg }};display:flex;align-items:center;justify-content:center;padding:0"><span style="width:{{ p.micDot }};height:{{ p.micDot }};border-radius:{{ p.micRad }};background:{{ p.micFg }}"></span></button>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13px;color:#141414;font-weight:500">{{ p.micLabel }}</div>
+<textarea value="{{ p.vt }}" onChange="{{ h.vt }}" rows="4" placeholder="ספרו מה מצאתם: איך נראה האתר, אם יש מודעות בספריות, מתי הפוסט האחרון בכל רשת, מה מופיע בגוגל…" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
+<sc-if value="{{ p.vInterim }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">{{ p.vInterim }}</div></sc-if>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<button type="button" onClick="{{ h.extract }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;color:#141414">{{ p.extractLabel }}</button>
+<span style="font-size:12px;color:#6b6b6b">שום דבר לא נשמר בלי אישור שלכם.</span>
+</div>
+<sc-if value="{{ p.showAn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap"><label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b;flex:1;min-width:220px">מפתח Claude API (נשמר בדפדפן הזה בלבד)<input type="password" value="{{ p.anKey }}" onChange="{{ h.anKey }}" dir="ltr" placeholder="sk-ant-…" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px"></label><a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener" style="font-size:13px;padding:8px 0">קבלת מפתח ↗</a></div></sc-if>
+</div>
+</div>
+<sc-if value="{{ p.hasProp }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fbf9f8;border:1px dashed #d9cfcd;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:14px;font-weight:600;color:#141414">מה הבנתי מהתיעוד</div>
+<dl style="margin:0;display:grid;grid-template-columns:minmax(110px,auto) minmax(0,1fr);gap:6px 14px;font-size:13px">
+<sc-for list="{{ p.prop }}" as="x" hint-placeholder-count="4"><dt style="color:#6b6b6b">{{ x.k }}</dt><dd style="margin:0;color:#141414">{{ x.v }}</dd></sc-for>
+</dl>
+<sc-if value="{{ p.propEmpty }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b6b">לא זיהיתי ממצאים מפורשים. נסו לפרט יותר.</div></sc-if>
+<div style="display:flex;gap:8px"><button type="button" onClick="{{ h.applyProp }}" style="border:0;background:#141414;color:#ffffff;font-weight:600;border-radius:10px;padding:8px 16px;font-size:13px">אישור ושמירה בבדיקות</button><button type="button" onClick="{{ h.dropProp }}" style="border:1px solid #e9e0de;background:transparent;border-radius:10px;padding:8px 14px;font-size:13px">ביטול</button></div>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ p.tab.team }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:720px"><div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">הערות ניצן / אלון</h3>
 <div role="group" aria-label="סטטוס אלון / ניצן" style="display:flex;gap:4px;flex-wrap:wrap">
 <sc-for list="{{ p.statuses }}" as="s" hint-placeholder-count="5">
 <button type="button" onClick="{{ s.go }}" aria-pressed="{{ s.on }}" style="border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.color }};border-radius:999px;padding:5px 12px;font-size:12px;font-weight:500">{{ s.t }}</button>
@@ -552,9 +581,11 @@ button{cursor:pointer}
 </div>
 <textarea value="{{ p.rev.notes }}" onChange="{{ h.revNotes }}" rows="3" placeholder="מה הם אמרו בפועל: רקע, רגישויות, למי לפנות" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:12px;padding:10px 12px;font-size:14px;resize:vertical;width:100%;box-sizing:border-box"></textarea>
 <label style="display:flex;gap:10px;align-items:center;font-size:12px;color:#6b6b6b">התקבל בתאריך<input type="date" value="{{ p.rev.date }}" onChange="{{ h.revDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:7px 10px;font-size:14px;color:#141414"></label>
-</div>
-<div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
-<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">שיחה ומשימות</h3>
+</div></div>
+</sc-if>
+<sc-if value="{{ p.tab.call }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:820px"><div style="background:#ffffff;border:1px solid #f3eeed;box-shadow:0 8px 30px rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:Assistant,sans-serif;font-weight:700;color:#141414;font-size:18px">ממצאי השיחה ומעקב</h3>
 <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px">
 <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תוצאת שיחה<select value="{{ p.call.outcome }}" onChange="{{ h.callOutcome }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%236b6b6b%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;padding-left:34px"><option value="">טרם התקיימה</option><option value="quote">התבקשה הצעת מחיר</option><option value="meeting">פגישה עם אלון / ניצן</option><option value="opp">זוהתה הזדמנות</option><option value="service">בעיית שירות</option><option value="callback">התבקשה חזרה במועד מסוים</option><option value="noneed">אין צורך</option><option value="notint">לא מעוניין</option><option value="noanswer">אין מענה</option></select></label>
 <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6b6b6b">תאריך<input type="date" value="{{ p.call.date }}" onChange="{{ h.callDate }}" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px 10px;font-size:14px;color:#141414;min-width:0"></label>
@@ -574,8 +605,8 @@ button{cursor:pointer}
 <input type="date" value="{{ d.aDue }}" onChange="{{ h.dADue }}" aria-label="מועד" style="background:#ffffff;border:1.5px solid #e9e0de;color:#141414;border-radius:10px;padding:8px;font-size:13px;color:#141414;min-width:0">
 <button type="button" onClick="{{ h.addAction }}" style="border:0;background:#f6f1f0;border-radius:10px;padding:8px 14px;font-size:13px">הוספה</button>
 </div>
-</div>
-</div>
+</div></div>
+</sc-if>
 </div>
 </div>
 </div>
@@ -643,7 +674,7 @@ class Component extends DCLogic {
     if(!o.site.res)o.site={...o.site,...x.site,date:d};if(!o.ads.google&&!o.ads.meta)o.ads={...o.ads,...x.ads,date:d};if(!o.gbp.res)o.gbp={...o.gbp,...x.gbp,date:d};if(!o.org.kwRes)o.org={...o.org,...x.org,date:o.org.date||d};
     if(!o.soc.res){o.soc.res=x.soc.res;o.soc.date=d;o.soc.ev=(o.soc.ev?o.soc.ev+'\n':'')+x.soc.ev;Object.entries(x.soc.last).forEach(([k,v])=>{o.soc.p[k]={...(o.soc.p[k]||{}),last:(o.soc.p[k]||{}).last||v};});}
     return{R:{...s.R,[id]:o},seed2:true};});}
-  state={cfg:{},sync:'',view:null,rec:false,vt:'',vInterim:'',vBusy:false,prop:null,auto:{},shots:{},pid:null,src:null,meta:null,R:{},next:[],set:{days:90},sentAt:'',q:'',gf:{},sf:'all',sort:'gaps',limit:null,menu:false,toast:'',loadErr:'',d:{site:'',cName:'',cRole:'',cPhone:'',cEmail:'',aText:'',aKind:'deliver',aDue:''}};
+  state={ptab:'crm',cfg:{},sync:'',view:null,rec:false,vt:'',vInterim:'',vBusy:false,prop:null,auto:{},shots:{},pid:null,src:null,meta:null,R:{},next:[],set:{days:90},sentAt:'',q:'',gf:{},sf:'all',sort:'gaps',limit:null,menu:false,toast:'',loadErr:'',d:{site:'',cName:'',cRole:'',cPhone:'',cEmail:'',aText:'',aKind:'deliver',aDue:''}};
   csvRef=React.createRef();bakRef=React.createRef();
   componentDidMount(){
     let saved=null;try{saved=JSON.parse(localStorage.getItem(LS)||'null');}catch(e){}
@@ -822,9 +853,16 @@ class Component extends DCLogic {
           else if(k==='mads'){sum=d.active==null?d.note:d.active?`${d.active} מודעות פעילות${d.newest?' · החדשה מ-'+fmt(d.newest):''}`:'אין מודעות פעילות';items=[{a:'מקור',b:'ספריית המודעות של Meta',href:d.link}];}
           else{sum=d.last?`פוסט אחרון ${fmt(d.last)} (${ago(d.last)})`:d.note||'לא נמצאו פוסטים';items=(d.posts||[]).map(q=>({a:fmt(q.date),b:q.text||'—',href:q.url}));}}
         const st=stOf(k);return{k,title:AICH.find(z=>z[0]===k)[1],st:st.t,stc:st.c,sum,hasSum:!!sum,items,hasItems:items.length>0};};
-      const aiSecs=AICH.map(([k])=>sec(k));const aiAny=Object.keys(A).length>0;
+      const aiSecs=AICH.map(([k])=>sec(k));const SOCK=['fb','ig','tt'];
+      const chips=AICH.map(([k,t])=>{const x=A[k];const st=!x?'':x.status;return{t:t.split(' · ')[0].split(':')[0],c:st==='ok'?'#1d5b31':st==='err'?'#a3262c':st==='run'?'#8a4b00':'#6b6b6b',bg:st==='ok'?'#e9f5ec':st==='err'?'#fdf0f0':st==='run'?'#fdf3e3':'#f6f1f0'};});
+      const disc=sec('discover');const lastAt=Object.values(A).map(x=>x&&x.at).filter(Boolean).sort().pop();
+      const headline=aiBusy?'הסקירה רצה. אפשר לעבור בין הטאבים בינתיים.':disc.sum&&A.discover&&A.discover.status==='ok'?disc.sum+(lastAt?' · נסקר '+fmt(lastAt):''):'פוסטים אחרונים, Google Business וביקורות, מודעות פעילות, מיקום בגוגל ומונחים ענפיים.';
+      const TABS=[['crm','מידע מה-CRM'],['sites','אתרים'],['social','רשתות חברתיות'],['mkt','שיווק בגוגל ורשתות'],['roy','הערות של רועי'],['team','הערות ניצן / אלון'],['call','ממצאי השיחה ומעקב']];const pt=s.ptab||'crm';
+      const tabN={sites:ST[pr.st.site]&&pr.st.site==='gap'?'פער':'',social:pr.st.soc==='gap'?'פער':'',mkt:['org','ads','gbp'].filter(k=>pr.st[k]==='gap').length?['org','ads','gbp'].filter(k=>pr.st[k]==='gap').length+' פערים':''};
+      const tabs=TABS.map(([k,t])=>({t,n:tabN[k]||'',on:pt===k,fw:pt===k?'700':'500',c:pt===k?'#141414':'#6b6b6b',bd:pt===k?'#F0565C':'transparent',go:()=>this.setState({ptab:k})}));
+      const tabOn=Object.fromEntries(TABS.map(([k])=>[k,pt===k]));const aiAny=Object.keys(A).length>0;
       const keysOk=cfg.keys&&cfg.keys.serp&&cfg.keys.anthropic&&cfg.keys.apify;
-      p={ai:{cloud:!!cfg.cloud,local:!cfg.cloud,secs:aiSecs,any:aiAny,canApply:aiAny&&!aiBusy,label:aiBusy?'המחקר רץ…':aiAny?'הרצת מחקר AI מחדש':'הרצת מחקר AI',keysMsg:cfg.cloud&&!keysOk?'חסרים מפתחות ב-Vercel: '+[['serp','SERPAPI_KEY'],['anthropic','ANTHROPIC_API_KEY'],['apify','APIFY_TOKEN']].filter(([k])=>!(cfg.keys||{})[k]).map(x=>x[1]).join(', '):'',sync:s.sync||(cfg.cloud?'':'שמירה בדפדפן בלבד. השמירה ל-Google Drive פועלת בגרסת Vercel.'),driveOn:!!cfg.drive,autoOn:s.set.autoAI!==false,myTerms:o.org.myTerms||'',myCount:splitTerms(o.org.myTerms).length,autoLabel:s.set.autoAI!==false?'מחקר אוטומטי בפתיחת לקוח: פועל':'מחקר אוטומטי בפתיחת לקוח: כבוי'},terms,hasTerms:terms.length>0,web:o.site,siteHref:href(pr.site),hasAuto:!!au,autoRows,shot:s.shots[id]?'data:image/jpeg;base64,'+String(s.shots[id]).replace(/^data:[^,]*,/,''):'',autoNote:au?`נבדק אוטומטית ב-${fmt(au.date)} · Google PageSpeed · ${short(au.url)}. המסקנה נשארת שלכם.`:'',autoLabel:ast==='busy'?'בודק את האתר…':au?'בדיקת אתר מחדש':'בדיקת אתר אוטומטית',autoMsg:ast&&ast!=='busy'?ast:'',psManual:'https://pagespeed.web.dev/analysis?url='+encodeURIComponent(href(pr.site)),psKey:s.set.psKey||'',anKey:s.set.anKey||'',showAn:!!(s.needAn||(s.set.anKey||'').trim()||!(window.claude&&window.claude.complete)),psKeyOn:!!(s.set.psKey||'').trim(),sources,srcCount:sources.length,
+      p={tabs,tab:tabOn,ai:{headline,chips,hasProgress:Object.keys(A).length>0,secsSoc:aiSecs.filter(x=>SOCK.includes(x.k)),secsMkt:aiSecs.filter(x=>!SOCK.includes(x.k)&&x.k!=='discover'),cloud:!!cfg.cloud,local:!cfg.cloud,secs:aiSecs,any:aiAny,canApply:aiAny&&!aiBusy,label:aiBusy?'המחקר רץ…':aiAny?'הרצת מחקר AI מחדש':'הרצת מחקר AI',keysMsg:cfg.cloud&&!keysOk?'חסרים מפתחות ב-Vercel: '+[['serp','SERPAPI_KEY'],['anthropic','ANTHROPIC_API_KEY'],['apify','APIFY_TOKEN']].filter(([k])=>!(cfg.keys||{})[k]).map(x=>x[1]).join(', '):'',sync:s.sync||(cfg.cloud?'':'שמירה בדפדפן בלבד. השמירה ל-Google Drive פועלת בגרסת Vercel.'),driveOn:!!cfg.drive,autoOn:s.set.autoAI!==false,myTerms:o.org.myTerms||'',myCount:splitTerms(o.org.myTerms).length,autoLabel:s.set.autoAI!==false?'מחקר אוטומטי בפתיחת לקוח: פועל':'מחקר אוטומטי בפתיחת לקוח: כבוי'},terms,hasTerms:terms.length>0,web:o.site,siteHref:href(pr.site),hasAuto:!!au,autoRows,shot:s.shots[id]?'data:image/jpeg;base64,'+String(s.shots[id]).replace(/^data:[^,]*,/,''):'',autoNote:au?`נבדק אוטומטית ב-${fmt(au.date)} · Google PageSpeed · ${short(au.url)}. המסקנה נשארת שלכם.`:'',autoLabel:ast==='busy'?'בודק את האתר…':au?'בדיקת אתר מחדש':'בדיקת אתר אוטומטית',autoMsg:ast&&ast!=='busy'?ast:'',psManual:'https://pagespeed.web.dev/analysis?url='+encodeURIComponent(href(pr.site)),psKey:s.set.psKey||'',anKey:s.set.anKey||'',showAn:!!(s.needAn||(s.set.anKey||'').trim()||!(window.claude&&window.claude.complete)),psKeyOn:!!(s.set.psKey||'').trim(),sources,srcCount:sources.length,
         vt:s.vt,vInterim:s.vInterim,rec,micLabel:rec?'מקליט… לחצו לעצירה':'לחצו על המיקרופון ותספרו מה מצאתם',micBg:rec?'#F0565C':'#ffffff',micBd:rec?'#F0565C':'#e9e0de',micFg:rec?'#ffffff':'#F0565C',micDot:rec?'16px':'18px',micRad:rec?'4px':'999px',extractLabel:s.vBusy?'מעבד…':'מילוי הבדיקות מהטקסט',hasProp:!!(s.prop&&s.prop.id===id),prop:s.prop&&s.prop.id===id?this.propRows(s.prop.j):[],propEmpty:!!(s.prop&&s.prop.id===id&&!this.propRows(s.prop.j).length),
         id,name:pr.name,stage:src[K.stage]||'',gaps:pr.gaps,gapColor:pr.gaps?'#c62f36':'#141414',doneText:doneText(pr),needs:pr.done<NC,hold:o.hold,holdBd:o.hold?'#F0565C':'#e9e0de',inNext:nextIn(id),nextLabel:nextIn(id)?'ב-10 הבאים ✓':'+ ל-10 הבאים',
         sourceName:(s.meta&&s.meta.source)||'CSV',srcFields,brand:o.brand,term,siteShort:short(pr.site),
@@ -860,7 +898,7 @@ class Component extends DCLogic {
       autoFill:()=>{const add=sl.filter(r=>!s.next.includes(r.id)).slice(0,10-s.next.length);if(!add.length)return this.flash(sl.length?'אין מועמדים נוספים':'אין עדיין לקוחות עם פער מאומת');this.setState(st=>{const R={...st.R};add.forEach(r=>{const o=mk(R,r.id);if(!o.rev.status)R[r.id]={...o,rev:{...o.rev,status:'awaiting'}};});return{next:[...st.next,...add.map(r=>r.id)],R};});this.flash(`נוספו ${add.length} לקוחות`);},
       copyList:()=>this.copyList(),exportCsv:()=>this.exportCsv(),
       topActions,noActions:topActions.length===0,moreActionsText:acts.length>5?`ועוד ${acts.length-5} פעולות פתוחות בפרופילים.`:'',
-      hasProfile:!!p,p:p||{ai:{secs:[]},terms:[],web:{},sources:[],autoRows:[],prop:[],pill:{site:{},org:{},ads:{},gbp:{},soc:{}},org:{},ads:{},gbp:{},soc:{},rev:{},call:{},L:{}},h,d:s.d,days:s.set.days,closeProfile:()=>{this.stopMic();this.setState({pid:null,rec:false})},
+      hasProfile:!!p,p:p||{tabs:[],tab:{},ai:{secs:[],chips:[],secsSoc:[],secsMkt:[]},terms:[],web:{},sources:[],autoRows:[],prop:[],pill:{site:{},org:{},ads:{},gbp:{},soc:{}},org:{},ads:{},gbp:{},soc:{},rev:{},call:{},L:{}},h,d:s.d,days:s.set.days,closeProfile:()=>{this.stopMic();this.setState({pid:null,rec:false})},
       toast:s.toast,
       csvRef:this.csvRef,bakRef:this.bakRef,pickCsv:()=>{this.setState({menu:false});this.csvRef.current&&this.csvRef.current.click();},pickBackup:()=>{this.setState({menu:false});this.bakRef.current&&this.bakRef.current.click();},
       onCsv:e=>this.importCsv(e),onBackup:e=>this.importBackup(e),

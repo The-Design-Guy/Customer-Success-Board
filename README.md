@@ -1,23 +1,44 @@
 # WEB3D · Customer Success Board
 
-לוח סינון ומחקר ל-334 לקוחות WEB3D.
+לוח סינון ומחקר ללקוחות WEB3D. רץ על Vercel: מחקר AI אוטומטי לכל לקוח, ושמירה ב-Google Drive.
 
-## הפעלה ב-GitHub Pages
-1. מעלים את כל הקבצים בתיקייה הזו לשורש ה-repo.
-2. Settings → Pages → Source: Deploy from a branch → main / root.
-3. האתר יעלה בכתובת https://<user>.github.io/<repo>/
+## 1. העלאה
+1. יוצרים repo **פרטי** ב-GitHub ומעלים את כל הקבצים.
+2. ב-Vercel: Add New → Project → בוחרים את ה-repo → Deploy (בלי Build Command, בלי Framework).
 
-חובה להריץ דרך שרת (GitHub Pages / Vercel / `npx serve`). פתיחה ישירה של index.html מהמחשב לא תטען את clients-data.json.
+## 2. משתני סביבה (Vercel → Settings → Environment Variables)
+| משתנה | חובה | למה | מאיפה |
+|---|---|---|---|
+| APP_PASSWORD | מומלץ מאוד | סיסמה לכניסה לאתר (יש בו טלפונים של לקוחות) | בוחרים לבד |
+| ANTHROPIC_API_KEY | כן | זיהוי שם העסק, מונחים ענפיים, עיבוד הקלטות | console.anthropic.com → API Keys |
+| SERPAPI_KEY | כן | מיקום בגוגל, Google Business וביקורות, מודעות Google | serpapi.com → Dashboard |
+| APIFY_TOKEN | כן | 5 פוסטים אחרונים בפייסבוק/אינסטגרם/טיקטוק, מודעות Meta | console.apify.com → Settings → Integrations |
+| PAGESPEED_API_KEY | מומלץ | בדיקת אתר (מובייל, ביצועים) | console.cloud.google.com → PageSpeed Insights API |
+| DATAFORSEO_LOGIN / DATAFORSEO_PASSWORD | רשות | נפח חיפוש אמיתי למונחים. בלעדיו: הערכת AI | dataforseo.com |
+| GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET / GOOGLE_REFRESH_TOKEN | לשמירה ב-Drive | ראו סעיף 3 | |
+| DRIVE_FOLDER_ID | רשות | תיקייה קיימת לשמירה (החלק שאחרי /folders/ בכתובת) | 1OTZmY-fJaAP20LVCflA6MmOnhfhVHEyi |
+| CLAUDE_MODEL | רשות | ברירת מחדל claude-sonnet-4-5 | |
 
-## מפתחות (נשמרים רק בדפדפן, לא ב-repo)
-- **PageSpeed API** – לבדיקת אתר אוטומטית. console.cloud.google.com → הפעלת PageSpeed Insights API → Credentials → API key.
-- **Claude API** – לעיבוד התיעוד הקולי לשדות. console.anthropic.com/settings/keys.
+אחרי כל שינוי במשתנים: Deployments → ⋯ → Redeploy.
 
-## מיקרופון
-עובד ב-Chrome / Edge, בכתובת HTTPS. בפעם הראשונה הדפדפן יבקש הרשאה.
+## 3. חיבור Google Drive (פעם אחת)
+1. console.cloud.google.com → פרויקט חדש → APIs & Services → Library → **Google Drive API** → Enable.
+2. OAuth consent screen → External → ממלאים שם ומייל → Scopes: `.../auth/drive` (אם משתמשים ב-DRIVE_FOLDER_ID) או `.../auth/drive.file` → שומרים. ואז **Publish app** (אחרת החיבור פג אחרי 7 ימים).
+3. Credentials → Create credentials → OAuth client ID → Web application.
+   - Authorized redirect URIs: `https://<הכתובת-שלכם>.vercel.app/api/google/callback`
+4. מעתיקים Client ID ו-Client secret ל-Vercel (GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET) → Redeploy.
+5. נכנסים ל-`https://<הכתובת>.vercel.app/api/google/auth`, מאשרים את החשבון. אם מופיע "Google hasn't verified this app" → Advanced → Continue.
+6. בעמוד שנפתח מעתיקים את הערך ל-GOOGLE_REFRESH_TOKEN ב-Vercel → Redeploy.
 
-## שמירת נתונים
-המחקר נשמר ב-localStorage של הדפדפן. גבו מדי פעם: נתונים ויבוא → ייצוא גיבוי מחקר.
+בדרייב תיווצר תיקייה "Customer Success Board" עם קובץ JSON לכל לקוח שנחקר, וקובץ רשימות והגדרות. הלוח טוען אותם בכל פתיחה ושומר כל שינוי תוך שניות.
 
-## אבטחה
-clients-data.json מכיל שמות וטלפונים של לקוחות. השתמשו ב-repo **פרטי**. שימו לב: GitHub Pages מ-repo פרטי דורש תוכנית בתשלום, והאתר עצמו עדיין ציבורי. חלופה מומלצת: Vercel עם הגנת סיסמה.
+## עלויות משוערות לכל לקוח (מחקר מלא)
+- SerpApi: כ-10 עד 30 חיפושים (תלוי באיזה עמוד העסק נמצא). התוכנית הבסיסית: 5,000 חיפושים בחודש.
+- Apify: 4 הרצות, בערך 0.05$ עד 0.20$.
+- Claude: פחות מ-0.02$.
+
+## הערות
+- המחקר רץ אוטומטית כשפותחים לקוח שלא נחקר ב-14 הימים האחרונים (אפשר לכבות בלוח).
+- מודעות Meta: נבדקות לפי עמוד הפייסבוק. אם אין עמוד, מוצג קישור לחיפוש לפי שם.
+- ביקורות Google: 5 האחרונות לפי תאריך.
+- Apify ו-SerpApi הם שירותי צד ג׳ שסורקים עמודים ציבוריים. תוצאות יכולות לחסור או להשתנות, ולכן כל ממצא מוצג עם קישור לאימות.

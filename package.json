@@ -1,0 +1,8 @@
+{
+  "name": "customer-success-board",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}

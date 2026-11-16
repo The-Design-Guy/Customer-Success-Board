@@ -81,8 +81,8 @@ const checks={
       kg:kg?{title:kg.title||'',website:kg.website||'',match:sameSite(kg.website,c.site)||nameSim(kg.title,c.brand)}:null};
   },
   async terms(c){
-    const T=(c.terms||[]).slice(0,5);if(!T.length)return{results:[],note:'אין מונחים לבדיקה'};
-    const results=await Promise.all(T.map(async t=>{const kw=t.kw||t;try{return{kw,volume:t.volume??null,...await rankFor(kw,c.site,5)}}catch(e){return{kw,error:e.message}}}));
+    const T=(c.terms||[]).slice(0,20);if(!T.length)return{results:[],note:'אין מונחים לבדיקה'};
+    const results=await Promise.all(T.map(async t=>{const kw=t.kw||t;try{return{kw,mine:!!t.mine,volume:t.volume??null,...await rankFor(kw,c.site,5)}}catch(e){return{kw,mine:!!t.mine,error:e.message}}}));
     return{results};
   }
 };

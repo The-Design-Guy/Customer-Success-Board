@@ -104,7 +104,7 @@ button{cursor:pointer}button:disabled{cursor:not-allowed}
 </div>
 <sc-if value="{{ sentText }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#7FE3FF">{{ sentText }}</div></sc-if>
 <div style="overflow-x:auto"><div role="table" aria-label="10 הבאים" style="min-width:900px">
-<div role="row" style="display:grid;grid-template-columns:36px minmax(180px,1.4fr) minmax(150px,1fr) 180px minmax(150px,1.2fr) auto;gap:12px;font-size:12px;color:#A8B4C9;padding:6px 0"><span>#</span><span>חברה</span><span>פערים מאומתים</span><span>סטטוס סקירה</span><span>הערת הנהלה</span><span></span></div>
+<div role="row" style="display:grid;grid-template-columns:36px minmax(180px,1.4fr) minmax(150px,1fr) 180px minmax(150px,1.2fr) auto;gap:12px;font-size:12px;color:#A8B4C9;padding:6px 0"><span>#</span><span>חברה</span><span>פערים מאומתים</span><span>סטטוס סקירה</span><span>הערות</span><span></span></div>
 <sc-for list="{{ qRows }}" as="r" hint-placeholder-count="10">
 <div role="row" style="display:grid;grid-template-columns:36px minmax(180px,1.4fr) minmax(150px,1fr) 180px minmax(150px,1.2fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #1E2D47">
 <span style="font-size:13px;color:#A8B4C9">{{ r.idx }}</span>
@@ -827,7 +827,7 @@ class Component extends DCLogic {
     const prog=all.map(r=>({r,ps:procOf(r.o)})).filter(x=>x.ps);const progOpen=prog.filter(x=>x.ps!=='closed');
     const navDefs=[['home','ראשי',0],['actions','פעולות מיידיות',acts.filter(a=>a.pri<=1).length],['clients','כל הלקוחות',0],['progress','לקוחות בתהליך',progOpen.length]];
     const nav=navDefs.map(([v,t,n])=>({t,go:go(v),cur:view===v?'page':undefined,bg:view===v?'#162942':'transparent',color:view===v?'#F7F9FF':'#A8B4C9',bd:view===v?'#00CFFF':'transparent',hasCount:n>0,count:n}));
-    const qRows=nextL.map((r,i)=>{const rv=r.rev||'awaiting';return{idx:i+1,name:r.name,site:(r.c.size?r.c.size.toLocaleString('he-IL')+' ₪ בשנה · ':'')+short(r.site),gapNames:this.gapNames(r),gapText:r.gaps?'':(r.done?'אין פער מאומת':'טרם נבדק'),rev:rv,revC:REVC[rv],onRev:e=>{const v=e.target.value;this.setR(r.id,o=>{o.rev.status=v;if(v!=='awaiting'&&!o.rev.date)o.rev.date=now;});this.addLog(r.id,'review','סטטוס סקירה: '+REVL[v]);},note:r.o.rev.notes||'—',open:open(r.id,'overview'),
+    const qRows=nextL.map((r,i)=>{const rv=r.rev||'awaiting';return{idx:i+1,name:r.name,site:(r.c.size?r.c.size.toLocaleString('he-IL')+' ₪ בשנה · ':'')+short(r.site),gapNames:this.gapNames(r),gapText:r.gaps?'':(r.done?'אין פער מאומת':'טרם נבדק'),rev:rv,revC:REVC[rv],onRev:e=>{const v=e.target.value;this.setR(r.id,o=>{o.rev.status=v;if(v!=='awaiting'&&!o.rev.date)o.rev.date=now;});this.addLog(r.id,'review','סטטוס סקירה: '+REVL[v]);},note:[r.o.note?'רועי: '+r.o.note:'',r.o.rev.notes?'הנהלה: '+r.o.rev.notes:''].filter(Boolean).join(' · ')||'—',open:open(r.id,'overview'),
       remove:()=>{const w=prompt('סיבת ההוצאה מהתור. הלקוח לא יחזור לתור אוטומטית.','לא רלוונטי כרגע');if(w==null)return;this.setR(r.id,o=>{o.q={...(o.q||{}),out:{at:now,why:w||'הוצא ידנית'},pin:false};});this.addLog(r.id,'queue','הוצא מ-10 הבאים: '+(w||'ידנית'));}};});
     const elig=all.filter(r=>!s.next.includes(r.id)&&!r.o.contactedAt&&!r.hold&&!['hold','dnc'].includes(r.rev)&&!(r.o.q&&r.o.q.out)).length;
     const qlogRows=(s.qlog||[]).slice(0,25).map(e=>({at:fmtT(e.at),name:e.name,why:e.why,t:e.ev==='in'?'נכנס':'יצא',c:e.ev==='in'?'#5BD69A':'#F5B85A'}));
@@ -986,13 +986,13 @@ class Component extends DCLogic {
   }
 
   packetText(){const L=this.packet();const lines=[`WEB3D | ${L.length} לקוחות לבדיקה מול אלון / ניצן · ${fmt(today())}`,'לפני כל שיחה: מה מצב הקשר? רגישויות? למי לפנות?',''];
-    L.forEach((r,i)=>{const g=this.gapNames(r);lines.push(`${i+1}. ${r.name}${r.site?' · '+short(r.site):''}`,`   פערים מאומתים: ${g.length?g.join(', '):'אין'} (${r.done}/${NC} בדיקות הושלמו)`,`   קשר קיים: ${this.rel(r.c)}`,`   הערות אלון / ניצן: `,'');});return lines.join('\n');}
+    L.forEach((r,i)=>{const g=this.gapNames(r);lines.push(`${i+1}. ${r.name}${r.site?' · '+short(r.site):''}`,`   פערים מאומתים: ${g.length?g.join(', '):'אין'} (${r.done}/${NC} בדיקות הושלמו)`,`   קשר קיים: ${this.rel(r.c)}`,...(String(r.o.note||'').trim()?[`   הערת רועי: ${String(r.o.note).trim().replace(/\n+/g,' · ')}`]:[]),`   הערות אלון / ניצן: ${String(r.o.rev.notes||'').trim().replace(/\n+/g,' · ')}`,'');});return lines.join('\n');}
   L_sent(){this.packet().forEach(r=>{if(!r.rev)this.setR(r.id,o=>{o.rev.status='awaiting';});this.addLog(r.id,'review','נשלח לאלון / ניצן לחוות דעת');});}
   copyList(){const L=this.packet();if(!L.length)return this.flash('לא נבחרו לקוחות');const t=this.packetText();const done=()=>{this.setState({sentAt:today()});this.L_sent();this.flash('הרשימה הועתקה. סמנו סטטוס סקירה כשמגיעה תשובה.');};
     if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,()=>this.fallbackCopy(t,done));else this.fallbackCopy(t,done);}
   fallbackCopy(t,done){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){this.flash('ההעתקה נכשלה');}ta.remove();}
-  exportCsv(){const L=this.packet();if(!L.length)return this.flash('לא נבחרו לקוחות');const head=['מזהה','לקוח','אתר','פערים מאומתים','בדיקות שהושלמו','קשר קיים עם WEB3D','סטטוס אלון / ניצן','הערות אלון / ניצן'];
-    const rows=L.map(r=>[r.id,r.name,r.site||'אין אתר מתועד',this.gapNames(r).join(', '),r.done+'/'+NC,this.rel(r.c),(REV.find(x=>x[0]===(r.rev||'awaiting'))||[])[1],r.o.rev.notes]);
+  exportCsv(){const L=this.packet();if(!L.length)return this.flash('לא נבחרו לקוחות');const head=['מזהה','לקוח','אתר','פערים מאומתים','בדיקות שהושלמו','קשר קיים עם WEB3D','הערת רועי','סטטוס אלון / ניצן','הערות אלון / ניצן'];
+    const rows=L.map(r=>[r.id,r.name,r.site||'אין אתר מתועד',this.gapNames(r).join(', '),r.done+'/'+NC,this.rel(r.c),r.o.note||'',(REV.find(x=>x[0]===(r.rev||'awaiting'))||[])[1],r.o.rev.notes]);
     download(`web3d-next10-${today()}.csv`,'\uFEFF'+[head,...rows].map(x=>x.map(csvCell).join(',')).join('\r\n'),'text/csv;charset=utf-8');this.setState({sentAt:this.state.sentAt||today()});}
   importCsv(e){const f=e.target.files&&e.target.files[0];e.target.value='';if(!f)return;const rd=new FileReader();rd.onload=()=>{const rows=parseCSV(String(rd.result));if(rows.length<2)return this.flash('הקובץ ריק');const header=rows[0].map(x=>x.trim());const ni=header.indexOf(K.name)>=0?header.indexOf(K.name):0;
       if(!confirm(`לייבא ${rows.length-1} רשומות ולהחליף את רשימת המקור? מחקר קיים נשמר ומשויך לפי שם הלקוח.`))return;
